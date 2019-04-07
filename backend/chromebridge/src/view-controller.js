@@ -92,7 +92,10 @@ document.addEventListener('DOMContentLoaded', function() {
   DisplayController.initWithConfig(config);
 
   // Initialize the app controller
-  AppController.initWebview(WEBVIEW_ID);
+  // AppController.initWebview(WEBVIEW_ID);
+
+  // Init flutter hack
+  AppController.initFlutterFetcher();
 
   // Load the list of apps and start the first one in the list
   AppController.getAvailableApps(true);

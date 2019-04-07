@@ -29,8 +29,8 @@ var app        = express();
 // Express config
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -110,4 +110,17 @@ app.get('/api/apps', function(req, res) {
       apps: apps
     });
   });
+});
+
+// uInt8Array
+var flutterBytes = [1,2,3,4,5,6,7,8];
+
+app.post('/flutter/pub', function(req, res) {
+  flutterBytes = JSON.parse(req.body.arr);
+  console.log(flutterBytes);
+  res.send('success');
+});
+
+app.get('/flutter/view', function(req, res) {
+  res.json(flutterBytes);
 });
