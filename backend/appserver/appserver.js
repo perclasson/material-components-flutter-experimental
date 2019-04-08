@@ -113,17 +113,29 @@ app.get('/api/apps', function(req, res) {
 });
 
 // uInt8Array
-var flutterBytes = [1,2,3,4,5,6,7,8];
+var flutterBytes = [];
+var inputStates = [];
 
-app.post('/flutter/pub', function(req, res) {
+// Called by flutter ap
+app.post('/flutter/publish-view', function(req, res) {
   flutterBytes = JSON.parse(req.body.arr);
-  console.log(flutterBytes);
   res.send('success');
 });
+app.get('/flutter/read-tap', function(req, res) {
+    var body = inputStates.slice();
+    inputStates = [];
+    res.json(body);
+});
 
-app.get('/flutter/view', function(req, res) {
+// Called by chromebridge
+app.get('/flutter/read-view', function(req, res) {
   setTimeout(
       () => res.json(flutterBytes),
       1000 / 60
   );
+});
+app.post('/flutter/publish-tap', function(req, res) {
+  console.log(req.body.arr);
+  inputStates = req.body.arr;
+  res.send('success');
 });

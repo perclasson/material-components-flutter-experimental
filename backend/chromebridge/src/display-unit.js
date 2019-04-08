@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+var AppController = require('./app-controller');
 var DisplayConfig = require('../../config/config.display');
 var DisplayController = require('./display-controller');
 var PacketBuilder = require('../../config/packets/packet-builder');
@@ -82,6 +83,20 @@ DisplayUnit.prototype.updateInputStates = function(buffer, headerLength) {
       data_8v[currentByte++] = position[1];
       data_8v[currentByte++] = changedInputs[i].state;
     }
+
+    var uInt8Arr = new Uint8Array(data_8);
+    var arr = [...uInt8Arr];
+    console.log(JSON.stringify(arr));
+    fetch('http://localhost:8000/flutter/publish-tap', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({arr})
+    }).then(function(response) {
+        // console.log(response);
+    });
 
     require('./app-controller').sendMessage(data_8);
   }
