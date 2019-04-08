@@ -122,5 +122,8 @@ app.post('/flutter/pub', function(req, res) {
 });
 
 app.get('/flutter/view', function(req, res) {
-  res.json(flutterBytes);
+  setTimeout(
+      () => res.json(flutterBytes),
+      1000 / 60
+  );
 });

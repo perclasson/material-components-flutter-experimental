@@ -39,30 +39,52 @@ AppController.currentApp = null;
 AppController.pixelStreamingEnabled = true;
 
 AppController.initFlutterFetcher = function() {
-    setInterval(function() {
-        fetch(AppController.baseAppUrl + '/flutter/view', {
-            method: 'get'
-        }).then(function(response) {
-            // AppController.ready = true;
-            return response.json();
-        }).then(function(json) {
-            if (json) {
-                var arr = Uint8Array.from(json);
+    // setInterval(function() {
+    //     fetch(AppController.baseAppUrl + '/flutter/view', {
+    //         method: 'get'
+    //     }).then(function(response) {
+    //         // AppController.ready = true;
+    //         return response.json();
+    //     }).then(function(json) {
+    //         if (json) {
+    //             var arr = Uint8Array.from(json);
+    //
+    //             console.log(arr);
+    //
+    //             var buffer = arr.buffer;
+    //             console.log(buffer);
+    //
+    //             // var data8v = new Uint8Array(arr);
+    //             // Check that the header = 0 - pixel data
+    //             // if (data8v[0] === 0) {
+    //                 AppController.pixelHandler(buffer);
+    //             // }
+    //         }
+    //     });
+    // }, 17);
 
-                console.log(arr);
+    fetch(AppController.baseAppUrl + '/flutter/view', {
+        method: 'get'
+    }).then(function(response) {
+        // AppController.ready = true;
+        return response.json();
+    }).then(function(json) {
+        if (json) {
+            var arr = Uint8Array.from(json);
 
-                var buffer = arr.buffer;
-                console.log(buffer);
+            console.log(arr);
 
-                // var data8v = new Uint8Array(arr);
-                // Check that the header = 0 - pixel data
-                // if (data8v[0] === 0) {
-                    AppController.pixelHandler(buffer);
-                // }
-            }
-        });
-    }, 17);
+            var buffer = arr.buffer;
+            console.log(buffer);
 
+            // var data8v = new Uint8Array(arr);
+            // Check that the header = 0 - pixel data
+            // if (data8v[0] === 0) {
+            AppController.pixelHandler(buffer);
+            AppController.initFlutterFetcher();
+            // }
+        }
+    });
 };
 
 /**

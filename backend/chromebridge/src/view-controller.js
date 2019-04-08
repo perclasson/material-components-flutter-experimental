@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // AppController.initWebview(WEBVIEW_ID);
 
   // Init flutter hack
-  AppController.initFlutterFetcher();
+    setTimeout(AppController.initFlutterFetcher, 1000);
 
   // Load the list of apps and start the first one in the list
   AppController.getAvailableApps(true);
