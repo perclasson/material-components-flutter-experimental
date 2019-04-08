@@ -1,0 +1,31 @@
+{
+  "name": "Google Buttonwall Emulator",
+  "description": "Emulates a Buttonwall system",
+  "version": "1.0",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "icons": {
+    "16": "images/logo_16.png",
+    "48": "images/logo_48.png",
+    "128": "images/logo_128.png"
+  },
+  "permissions": [
+    "webview",
+    "videoCapture",
+    {"fileSystem": ["write"]}
+  ],
+  "sockets":{
+    "udp": {
+      "bind" : "*",
+      "send" : "*"
+    }
+  },
+  "sandbox":{
+    "pages":["http://locahost:8000/", "http://localhost:8000/*"]
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAj7/JmB1+6hyudGhUn13hH+jEL+DO/p1ShaiBStF3w7chDtrtXlGMYn6PQ49hbsYH+GRqQ4xe2kk/RXUHJ/bFos10bzrj/uM6VWJVrZND2BzyRKKiB/Gg6zPEg12K+Rm89fF4h6BTmOsC39RaxKVz/Nr21Fp+O4efy/OV+ynczvM+w2uBtav0kcix49F5bHmmbNltuoOK9C3OfhGCd0oVJ8cMy7ACiM1OoHiSf54V6vQ0SbJQDqOxbIlQj+Q559S677pTYERLyxtZu4iPeXFduyCblOwypK3NLAiQdMgYbwoApn2J3LXVu31reIr87tk8AVsL9u0+pICSrqn75AHO3QIDAQAB"
+}
