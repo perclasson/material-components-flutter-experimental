@@ -51,7 +51,7 @@ class IoDemos {
         routeBuilder: (BuildContext context) => ExtendedFabDemo(),
       ),
       IoDemo(
-        title: 'Spherical Projection',
+        title: 'Anypixel',
         routeBuilder: (BuildContext context) => AnypixelDemo(),
       ),
     ];

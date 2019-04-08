@@ -21,53 +21,78 @@ class AnypixelDemoState extends State<AnypixelDemo> {
     Row row1 = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Icon(Icons.fastfood),
+        Icon(Icons.fastfood, color: Colors.orange,),
         Text('Yum!'),
-        Icon(Icons.cake),
+        Icon(Icons.cake, color: Colors.lightGreen,),
         Text('Mmmm!'),
       ],
     );
     Row row2 = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Icon(Icons.book),
-        Icon(Icons.flag),
-        Icon(Icons.book),
-        Icon(Icons.flag),
+        Text('Just text...', style: Theme.of(context).primaryTextTheme.headline),
       ],
     );
-    Row textRow = Row(
+    Row row3 = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Text('Neat!'),
-        Icon(Icons.flight),
+        Icon(Icons.flight, color: Colors.cyan,),
         Text('Cool!'),
-        Icon(Icons.directions_car),
+        Icon(Icons.directions_car, color: Colors.pink,),
       ],
     );
-    List<Row> iconRows = [
-      row1,
-      row2,
-      textRow,
-      row1,
-      row2,
-      textRow,
-      row1,
-      row2,
-      textRow,
-      row1,
-      row2,
-      textRow,
-      row1,
-      row2,
+//    List<Row> children = [
+//      row1,
+//      row2,
+//      row3,
+//      row1,
+//      row2,
+//      row3,
+//      row1,
+//      row2,
+//      row3,
+//    ];
+    TextStyle style = Theme.of(context).primaryTextTheme.headline.copyWith(
+      fontSize: 12,
+      letterSpacing: 1
+    );
+    List<Widget> children = [
+      SizedBox(
+        width: 140,
+        child: Center(child: Text('The Quiet, Yet Powerful Healthcare Revolution', style: style, textAlign: TextAlign.center,)),
+      ),
+      SizedBox(
+        width: 140,
+        child: Center(child: Text('As Stocks Stagnate, Many Look to Currency', style: style, textAlign: TextAlign.center)),
+      ),
+      SizedBox(
+        width: 140,
+        child: Center(child: Text('Llamas Patrol the Central Coast of California', style: style, textAlign: TextAlign.center)),
+      ),
     ];
+
+    ScrollController _scrollController = ScrollController();
 
     return Scaffold(
       body: SafeArea(
         child: AnypixelBridge(
-          child: ListView(
-            children: iconRows,
+          child: Container(
+            color: Colors.black,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              controller: _scrollController,
+              children: children,
+            ),
           ),
+          onPressed: (Offset offset) {
+            print(offset.toString());
+            _scrollController.position.animateTo(
+              _scrollController.offset + (offset.dx > 70 ? 140 : -140),
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+            );
+          },
         ),
       ),
     );
@@ -75,9 +100,10 @@ class AnypixelDemoState extends State<AnypixelDemo> {
 }
 
 class AnypixelBridge extends StatefulWidget {
-  AnypixelBridge({this.child});
+  AnypixelBridge({this.child, this.onPressed});
 
   final Widget child;
+  final ValueChanged<Offset> onPressed;
 
   @override
   State<StatefulWidget> createState() => AnypixelBridgeState();
@@ -105,8 +131,9 @@ class AnypixelBridgeState extends State<AnypixelBridge>
       builder: (BuildContext context, AsyncSnapshot<ui.Image> snapshot) {
         return Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 64),
+//              SizedBox(height: 64),
               SizedBox(
                 width: 140,
                 height: 42,
@@ -115,8 +142,8 @@ class AnypixelBridgeState extends State<AnypixelBridge>
                   key: globalKey,
                 ),
               ),
-              SizedBox(height: 64),
-              RawImage(image: _project(snapshot.data)),
+//              SizedBox(height: 64),
+//              RawImage(image: _project(snapshot.data)),
             ],
           ),
         );
@@ -136,10 +163,11 @@ class AnypixelBridgeState extends State<AnypixelBridge>
     // TODO(clocksmith): better rbga => rbg
     List<int> noAlphaBytes = [0];
     for (int i = 0; i < imageBytes.length; i++) {
-      if (i % 4 != 0) {
+      if ((i + 1) % 4 != 0) {
         noAlphaBytes.add(imageBytes[i]);
       }
     }
+//    print(noAlphaBytes.toString());
 
     var body = new Map<String, dynamic>();
     body['arr'] = noAlphaBytes.toString();
@@ -151,7 +179,7 @@ class AnypixelBridgeState extends State<AnypixelBridge>
     http.get('http://127.0.0.1:8000/flutter/read-tap').then((Response val) {
       List<dynamic> arr = jsonDecode(val.body);
       if (arr.length == 4 && arr[3] == 1) {
-        print('x: ${arr[2]}, y: ${arr[1]}');
+        widget.onPressed(Offset(arr[2].toDouble(), arr[1].toDouble()));
       }
 //      boundary.hitTest(result, position: null)
     });
