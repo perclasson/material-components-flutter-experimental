@@ -16,85 +16,170 @@ class AnypixelDemo extends StatefulWidget {
 }
 
 class AnypixelDemoState extends State<AnypixelDemo> {
+  String _demoName = 'fortnightly';
+
+  void handleRadioButtonChanged(String value) {
+    setState(() {
+      _demoName = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    Row row1 = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Icon(Icons.fastfood, color: Colors.orange,),
-        Text('Yum!'),
-        Icon(Icons.cake, color: Colors.lightGreen,),
-        Text('Mmmm!'),
-      ],
+    Widget demo;
+    switch (_demoName) {
+      case 'fortnightly':
+        demo = FortnightlyAnypixelDemo();
+        break;
+      case 'starter':
+        demo = StarterAnypixelDemo();
+        break;
+      default:
+        demo = StarterAnypixelDemo();
+    }
+
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            demo,
+            Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Text('fortnightly'),
+                    Radio<String>(
+                      value: 'fortnightly',
+                      groupValue: _demoName,
+                      onChanged: handleRadioButtonChanged,
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Text('starter'),
+                    Radio<String>(
+                      value: 'starter',
+                      groupValue: _demoName,
+                      onChanged: handleRadioButtonChanged,
+                    )
+                  ],
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
     );
-    Row row2 = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Text('Just text...', style: Theme.of(context).primaryTextTheme.headline),
-      ],
-    );
-    Row row3 = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Text('Neat!'),
-        Icon(Icons.flight, color: Colors.cyan,),
-        Text('Cool!'),
-        Icon(Icons.directions_car, color: Colors.pink,),
-      ],
-    );
-//    List<Row> children = [
-//      row1,
-//      row2,
-//      row3,
-//      row1,
-//      row2,
-//      row3,
-//      row1,
-//      row2,
-//      row3,
-//    ];
-    TextStyle style = Theme.of(context).primaryTextTheme.headline.copyWith(
-      fontSize: 12,
-      letterSpacing: 1
-    );
+  }
+}
+
+class FortnightlyAnypixelDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    TextStyle style = Theme.of(context)
+        .primaryTextTheme
+        .headline
+        .copyWith(fontSize: 12, letterSpacing: 1);
     List<Widget> children = [
       SizedBox(
         width: 140,
-        child: Center(child: Text('The Quiet, Yet Powerful Healthcare Revolution', style: style, textAlign: TextAlign.center,)),
+        child: Center(
+          child: Text(
+            'The Quiet, Yet Powerful Healthcare Revolution',
+            style: style,
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
       SizedBox(
         width: 140,
-        child: Center(child: Text('As Stocks Stagnate, Many Look to Currency', style: style, textAlign: TextAlign.center)),
+        child: Center(
+          child: Text(
+            'As Stocks Stagnate, Many Look to Currency',
+            style: style,
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
       SizedBox(
         width: 140,
-        child: Center(child: Text('Llamas Patrol the Central Coast of California', style: style, textAlign: TextAlign.center)),
+        child: Center(
+          child: Text(
+            'Llamas Patrol the Central Coast of California',
+            style: style,
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     ];
 
     ScrollController _scrollController = ScrollController();
 
-    return Scaffold(
-      body: SafeArea(
-        child: AnypixelBridge(
-          child: Container(
-            color: Colors.black,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              controller: _scrollController,
-              children: children,
-            ),
-          ),
-          onPressed: (Offset offset) {
-            print(offset.toString());
-            _scrollController.position.animateTo(
-              _scrollController.offset + (offset.dx > 70 ? 140 : -140),
-                duration: Duration(milliseconds: 500),
-                curve: Curves.easeInOut,
-            );
-          },
+    return AnypixelBridge(
+      child: Container(
+        color: Colors.black,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          controller: _scrollController,
+          children: children,
         ),
       ),
+      onPressed: (Offset offset) {
+        print(offset.toString());
+        _scrollController.position.animateTo(
+          _scrollController.offset + (offset.dx > 70 ? 140 : -140),
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      },
+    );
+  }
+}
+
+class StarterAnypixelDemo extends StatefulWidget {
+  @override
+  StarterAnypixelDemoState createState() => StarterAnypixelDemoState();
+}
+
+class StarterAnypixelDemoState extends State<StarterAnypixelDemo> {
+  int count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    TextStyle style = Theme.of(context)
+        .primaryTextTheme
+        .headline
+        .copyWith(fontSize: 12, letterSpacing: 1);
+    final key = Key('fab');
+    return AnypixelBridge(
+      child: Container(
+        color: Colors.black,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Text('Pressed', style: style),
+                Text('$count', style: style),
+                Text('times', style: style),
+              ],
+            ),
+            FloatingActionButton(
+              key: key,
+              mini: true,
+              child: Icon(Icons.add),
+              onPressed: () { },
+            ),
+          ],
+        ),
+      ),
+      onPressed: (Offset offset) {
+        setState(() {
+          count++;
+        });
+      },
     );
   }
 }
@@ -116,12 +201,17 @@ class AnypixelBridgeState extends State<AnypixelBridge>
 
   @override
   void initState() {
-    print('initState');
     super.initState();
     _ticker = this.createTicker((Duration duration) {
       setState(() {});
     });
     _ticker.start();
+  }
+
+  @override
+  void dispose() {
+    _ticker.dispose();
+    super.dispose();
   }
 
   @override
@@ -133,7 +223,6 @@ class AnypixelBridgeState extends State<AnypixelBridge>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-//              SizedBox(height: 64),
               SizedBox(
                 width: 140,
                 height: 42,
@@ -142,8 +231,6 @@ class AnypixelBridgeState extends State<AnypixelBridge>
                   key: globalKey,
                 ),
               ),
-//              SizedBox(height: 64),
-//              RawImage(image: _project(snapshot.data)),
             ],
           ),
         );
@@ -167,27 +254,19 @@ class AnypixelBridgeState extends State<AnypixelBridge>
         noAlphaBytes.add(imageBytes[i]);
       }
     }
-//    print(noAlphaBytes.toString());
 
     var body = new Map<String, dynamic>();
     body['arr'] = noAlphaBytes.toString();
 
-//    print(noAlphaBytes.length);
-
-    // 10.0.2.2 for android
+    // 10.0.2.2 for android ?
     http.post('http://127.0.0.1:8000/flutter/publish-view', body: body);
     http.get('http://127.0.0.1:8000/flutter/read-tap').then((Response val) {
       List<dynamic> arr = jsonDecode(val.body);
       if (arr.length == 4 && arr[3] == 1) {
         widget.onPressed(Offset(arr[2].toDouble(), arr[1].toDouble()));
       }
-//      boundary.hitTest(result, position: null)
     });
 
     return image;
-  }
-
-  ui.Image _project(ui.Image source) {
-    return source;
   }
 }
