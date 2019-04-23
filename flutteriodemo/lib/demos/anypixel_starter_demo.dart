@@ -3,9 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import '../anypixel.dart';
 
-
-
-
 class AnypixelStarterDemo extends StatefulWidget {
   @override
   AnypixelStarterDemoState createState() => AnypixelStarterDemoState();

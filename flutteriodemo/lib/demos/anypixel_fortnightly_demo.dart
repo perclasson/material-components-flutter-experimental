@@ -25,6 +25,16 @@ class AnypixelFortnightlyDemo extends StatelessWidget {
         width: 140,
         child: Center(
           child: Text(
+            'Divided American Lives During War',
+            style: style,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+      SizedBox(
+        width: 140,
+        child: Center(
+          child: Text(
             'As Stocks Stagnate, Many Look to Currency',
             style: style,
             textAlign: TextAlign.center,
@@ -36,6 +46,16 @@ class AnypixelFortnightlyDemo extends StatelessWidget {
         child: Center(
           child: Text(
             'Llamas Patrol the Central Coast of California',
+            style: style,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+      SizedBox(
+        width: 140,
+        child: Center(
+          child: Text(
+            'A Fight For Aging Veterans',
             style: style,
             textAlign: TextAlign.center,
           ),

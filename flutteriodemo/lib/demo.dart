@@ -7,8 +7,11 @@ import 'package:material_flutter_io19/demos/shape_theme_demo.dart';
 import 'package:material_flutter_io19/demos/anypixel_starter_demo.dart';
 import 'package:material_flutter_io19/demos/text_field_demo.dart';
 
+import 'demos/anypixel_banner_demo.dart';
 import 'demos/anypixel_fortnightly_demo.dart';
+import 'demos/anypixel_life_demo.dart';
 import 'demos/search_demo.dart';
+import 'fortnightly.dart';
 
 class IoDemo {
   const IoDemo({
@@ -64,6 +67,18 @@ class IoDemos {
       IoDemo(
         title: 'Anypixel Fortnightly',
         routeBuilder: (BuildContext context) => AnypixelFortnightlyDemo(),
+      ),
+      IoDemo(
+        title: 'Anypixel Banner',
+        routeBuilder: (BuildContext context) => AnypixelBannerDemo(),
+      ),
+      IoDemo(
+        title: 'Anypixel Life',
+        routeBuilder: (BuildContext context) => AnypixelLifeDemo(),
+      ),
+      IoDemo(
+        title: 'Fortnightly Phone Portrait',
+        routeBuilder: (BuildContext context) => FortnightlyPhonePortrait(),
       ),
     ];
   }

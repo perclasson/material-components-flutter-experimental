@@ -19,7 +19,10 @@ class IoHome extends StatelessWidget {
                     ),
                   );
                 },
-                child: Align(child: Text(demo.title), alignment: Alignment.centerLeft),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(child: Text(demo.title), alignment: Alignment.centerLeft),
+                ),
               ),
             );
           }).toList(),
