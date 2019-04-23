@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
 import '../anypixel.dart';
 
@@ -14,9 +15,11 @@ class AnypixelLifeDemo extends StatefulWidget {
 class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
     with SingleTickerProviderStateMixin {
   List<List<bool>> state;
+  Ticker _ticker;
+  int count = 0;
 
   _startTimer() {
-    Timer(Duration(milliseconds: 200), () {
+    Timer(Duration(milliseconds: 133), () {
       _updateState();
       _startTimer();
     });
@@ -59,14 +62,29 @@ class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
   @override
   void initState() {
     super.initState();
-    _startTimer();
+//    _startTimer();
     state = List.generate(140, (_) => List(42));
     for (int x = 0; x < state.length; x++) {
       for (int y = 0; y < state[x].length; y++) {
         state[x][y] = false;
       }
     }
-    _handlePressed(Offset(30, 10));
+
+    _ticker = this.createTicker((Duration duration) {
+      count++;
+      setState(() {
+        if (count % 3 == 0) {
+          _updateState();
+        }
+      });
+    });
+    _ticker.start();
+  }
+
+  @override
+  void dispose() {
+    _ticker.dispose();
+    super.dispose();
   }
 
   _handlePressed(Offset offset) {
@@ -79,29 +97,29 @@ class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
       int bottom = y == state[x].length - 1 ? 0 : y + 1;
       Random r = Random();
       int n = r.nextInt(10);
-      if (n <= 6) {
+      if (n <= 2) {
         state[x][y] = true;
         state[left][y] = true;
         state[right][y] = true;
-      } else if (n == 7) {
+      } else if (n <= 4) {
         state[x][y] = true;
         state[left][top] = true;
         state[x][bottom] = true;
         state[right][top] = true;
         state[right][y] = true;
-      } else if (n == 8) {
+      } else if (n <= 6) {
         state[x][y] = true;
         state[left][top] = true;
         state[x][bottom] = true;
         state[right][top] = true;
         state[left][y] = true;
-      } else if (n == 7) {
+      } else if (n <= 8) {
         state[x][y] = true;
         state[left][bottom] = true;
         state[x][top] = true;
         state[right][bottom] = true;
         state[right][y] = true;
-      } else if (n == 8) {
+      } else if (n <= 10) {
         state[x][y] = true;
         state[left][bottom] = true;
         state[x][top] = true;
@@ -119,7 +137,7 @@ class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
         child: Stack(
           children: <Widget>[
             CustomPaint(painter: GolPainter(toColorState())),
-            Image.asset('assets/flutter.png'),
+            Image.asset('assets/flutter_t.png'),
           ],
         ),
       ),
@@ -133,6 +151,10 @@ class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
       Colors.lightBlue,
       Colors.lightGreenAccent,
       Colors.lightBlueAccent,
+      Colors.yellow,
+      Colors.yellowAccent,
+      Colors.red,
+      Colors.redAccent,
     ];
     colors.shuffle();
 

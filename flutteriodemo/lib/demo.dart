@@ -9,6 +9,7 @@ import 'package:material_flutter_io19/demos/text_field_demo.dart';
 
 import 'demos/anypixel_banner_demo.dart';
 import 'demos/anypixel_fortnightly_demo.dart';
+import 'demos/anypixel_height_demo.dart';
 import 'demos/anypixel_life_demo.dart';
 import 'demos/search_demo.dart';
 import 'fortnightly.dart';
@@ -75,6 +76,10 @@ class IoDemos {
       IoDemo(
         title: 'Anypixel Life',
         routeBuilder: (BuildContext context) => AnypixelLifeDemo(),
+      ),
+      IoDemo(
+        title: 'Anypixel Height',
+        routeBuilder: (BuildContext context) => AnypixelHeightDemo(),
       ),
       IoDemo(
         title: 'Fortnightly Phone Portrait',
