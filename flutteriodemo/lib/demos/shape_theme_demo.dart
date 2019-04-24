@@ -21,6 +21,8 @@ class ShapeThemeDemoState extends State<ShapeThemeDemo> {
       shape: BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
     ));
 
+    double _value = 0.5;
+
     return Theme(
       data: _isCut ? _cutTheme : _roundTheme,
       child: Scaffold(
@@ -47,16 +49,62 @@ class ShapeThemeDemoState extends State<ShapeThemeDemo> {
                   child: Center(child: Text('Theme')),
                 ),
               ),
-              SizedBox(
-                height: 100,
-                child: Card(
-                  child: Center(child: Text('Demo')),
+              SliderTheme(
+                data: Theme.of(context).sliderTheme.copyWith(
+                  thumbShape: RoundSliderThumbShape()
+                ),
+                child: Slider(
+                  value: _value,
+                  onChanged: (double newValue) {
+                    setState() {
+                      _value = newValue;
+                    }
+                  },
                 ),
               ),
+              SliderTheme(
+                data: Theme.of(context).sliderTheme.copyWith(
+                    thumbShape: DiamondSliderThumbShape()
+                ),
+                child: Slider(
+                  value: _value,
+                  onChanged: (double newValue) {
+                    setState() {
+                      _value = newValue;
+                    }
+                  },
+                ),
+              )
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class DiamondSliderThumbShape extends RoundSliderThumbShape {
+  @override
+  void paint(
+    PaintingContext context,
+    Offset center, {
+    Animation<double> activationAnimation,
+    Animation<double> enableAnimation,
+    bool isDiscrete,
+    TextPainter labelPainter,
+    RenderBox parentBox,
+    SliderThemeData sliderTheme,
+    TextDirection textDirection,
+    double value,
+  }) {
+    Path diamond = Path()
+      ..moveTo(center.dx, center.dy - 8)
+      ..relativeLineTo(8, 8)
+      ..relativeLineTo(-8, 8)
+      ..relativeLineTo(-8, -8)
+      ..close();
+    Paint paint = Paint()..color = sliderTheme.thumbColor;
+    context.canvas.drawPath(diamond,paint);
+//    context.canvas.restore();
   }
 }

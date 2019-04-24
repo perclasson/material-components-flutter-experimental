@@ -14,6 +14,12 @@ class AnypixelFortnightlyDemo extends StatelessWidget {
       SizedBox(
         width: 140,
         child: Center(
+          child: Image.asset('assets/fortlogo_140x42.png'),
+        ),
+      ),
+      SizedBox(
+        width: 140,
+        child: Center(
           child: Text(
             'The Quiet, Yet Powerful Healthcare Revolution',
             style: style,

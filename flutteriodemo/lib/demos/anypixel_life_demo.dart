@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -18,43 +19,37 @@ class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
   Ticker _ticker;
   int count = 0;
 
-  _startTimer() {
-    Timer(Duration(milliseconds: 133), () {
-      _updateState();
-      _startTimer();
-    });
-  }
 
   _updateState() {
-    setState(() {
-//      print(state.toString());
-      List<List<bool>> newState = List.generate(140, (_) => List(42));
-      for (int x = 0; x < state.length; x++) {
-        for (int y = 0; y < state[x].length; y++) {
-          int left = x == 0 ? state.length - 1 : x - 1;
-          int top = y == 0 ? state[x].length - 1 : y - 1;
-          int right = x == state.length - 1 ? 0 : x + 1;
-          int bottom = y == state[x].length - 1 ? 0 : y + 1;
-          assert(0 <= left && left < 140);
-          assert(0 <= right && right < 140);
-          assert(0 <= top && top < 42);
-          assert(0 <= bottom && bottom < 42);
+    List<List<bool>> newState = List.generate(140, (_) => List(42));
+    for (int x = 0; x < state.length; x++) {
+      for (int y = 0; y < state[x].length; y++) {
+        int left = x == 0 ? state.length - 1 : x - 1;
+        int top = y == 0 ? state[x].length - 1 : y - 1;
+        int right = x == state.length - 1 ? 0 : x + 1;
+        int bottom = y == state[x].length - 1 ? 0 : y + 1;
+        assert(0 <= left && left < 140);
+        assert(0 <= right && right < 140);
+        assert(0 <= top && top < 42);
+        assert(0 <= bottom && bottom < 42);
 //          print('$left $top $right $bottom');
-          int sum = (state[left][top] ? 1 : 0) +
-              (state[x][top] ? 1 : 0) +
-              (state[right][top] ? 1 : 0) +
-              (state[left][y] ? 1 : 0) +
-              (state[right][y] ? 1 : 0) +
-              (state[left][bottom] ? 1 : 0) +
-              (state[x][bottom] ? 1 : 0) +
-              (state[right][bottom] ? 1 : 0);
-          if (sum == 3 || (sum == 2 && state[x][y])) {
-            newState[x][y] = true;
-          } else {
-            newState[x][y] = false;
-          }
+        int sum = (state[left][top] ? 1 : 0) +
+            (state[x][top] ? 1 : 0) +
+            (state[right][top] ? 1 : 0) +
+            (state[left][y] ? 1 : 0) +
+            (state[right][y] ? 1 : 0) +
+            (state[left][bottom] ? 1 : 0) +
+            (state[x][bottom] ? 1 : 0) +
+            (state[right][bottom] ? 1 : 0);
+        if (sum == 3 || (sum == 2 && state[x][y])) {
+          newState[x][y] = true;
+        } else {
+          newState[x][y] = false;
         }
       }
+    }
+    setState(() {
+//      print(state.toString());
       state = newState;
     });
   }
@@ -73,7 +68,7 @@ class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
     _ticker = this.createTicker((Duration duration) {
       count++;
       setState(() {
-        if (count % 3 == 0) {
+        if (count % 1 == 0) {
           _updateState();
         }
       });
@@ -145,24 +140,23 @@ class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
     );
   }
 
+  static const List<Color> _colors = [
+    Colors.lightGreen,
+    Colors.lightBlue,
+    Colors.lightGreenAccent,
+    Colors.lightBlueAccent,
+    Colors.yellow,
+    Colors.yellowAccent,
+    Colors.red,
+    Colors.redAccent,
+  ];
+
   List<List<Color>> toColorState() {
-    List<Color> colors = [
-      Colors.lightGreen,
-      Colors.lightBlue,
-      Colors.lightGreenAccent,
-      Colors.lightBlueAccent,
-      Colors.yellow,
-      Colors.yellowAccent,
-      Colors.red,
-      Colors.redAccent,
-    ];
-    colors.shuffle();
 
     List<List<Color>> colorState = List.generate(140, (_) => List(42));
     for (int x = 0; x < state.length; x++) {
       for (int y = 0; y < state[x].length; y++) {
-        colors.shuffle();
-        colorState[x][y] = state[x][y] ? colors[0] : Colors.black;
+        colorState[x][y] = state[x][y] ? _colors[Random().nextInt(_colors.length - 1)] : Colors.black;
       }
     }
     return colorState;
@@ -181,6 +175,7 @@ class GolPainter extends CustomPainter {
         Offset offset = Offset(x.toDouble(), y.toDouble());
         canvas.drawRect(Rect.fromPoints(offset, offset + Offset(1, 1)),
             Paint()..color = state[x][y]);
+//        canvas.drawPoints(PointMode.points, [offset], Paint()..color = state[x][y]);
       }
     }
   }

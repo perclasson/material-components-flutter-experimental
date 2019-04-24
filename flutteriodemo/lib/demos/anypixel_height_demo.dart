@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import '../anypixel.dart';
+import 'dart:math';
 
 class AnypixelHeightDemo extends StatefulWidget {
   @override
@@ -34,9 +35,10 @@ class AnypixelHeightDemoState extends State<AnypixelHeightDemo> {
   @override
   Widget build(BuildContext context) {
     double left = x;
-    double right = 140 - x - 20;
+    double right = 140 - x - 1;
     double top = y;
-    int heightInches = 36 + 2 * (42 - y.round());
+    double textRight = 140 - x - 26;
+    int heightInches = 21 + 2 * (42 - y.round());
     String heightText = '${heightInches ~/ 12}\'${heightInches % 12}';
 
     return AnypixelBridge(
@@ -47,41 +49,30 @@ class AnypixelHeightDemoState extends State<AnypixelHeightDemo> {
             AnimatedContainer(
               duration: Duration(milliseconds: 500),
               margin: EdgeInsets.only(left: left, top: top, right: right),
-              color: Colors.blue,
+              color: Colors.green,
             ),
             AnimatedContainer(
               duration: Duration(milliseconds: 500),
-              margin: EdgeInsets.only(left: left, top: top, right: right),
-              child: Text(
-                heightText,
-                style: Theme.of(context).textTheme.headline.copyWith(
-                      fontSize: 10,
-                      color: Colors.white,
-                    ),
+              margin: EdgeInsets.only(left: left + 2, top: max(0, top - 10) , right: textRight),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  heightText,
+                  style: Theme.of(context).textTheme.headline.copyWith(
+                        fontSize: 10,
+                        color: Colors.white,
+                        letterSpacing: 0.9,
+                        fontWeight: FontWeight.w500,
+//                    decoration: TextDecoration.underline,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             )
           ],
         ),
       ),
       onPressed: _handlePressed,
-    );
-
-    return GestureDetector(
-      onTap: () => _handlePressed(Offset.zero),
-      child: Center(
-        child: Container(
-          color: Colors.red,
-          width: 140,
-          height: 42,
-          child: AnimatedContainer(
-            duration: Duration(milliseconds: 2000),
-            margin: EdgeInsets.only(left: left, top: top, right: right),
-            color: Colors.green,
-//              width: 10,
-//            height: containerHeight,
-          ),
-        ),
-      ),
     );
   }
 }
