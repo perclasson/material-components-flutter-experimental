@@ -9,7 +9,7 @@ class AnypixelBannerDemo extends StatelessWidget {
     return AnypixelBridge(
       child: Container(
         color: Colors.black,
-        child: Image.asset('assets/flutter.png'),
+        child: Image.asset('assets/rally3.png'),
       ),
       onPressed: (Offset offset) {
         print(offset.toString());

@@ -27,6 +27,8 @@ class _IoAppState extends State<IoApp> {
       title: 'Demos',
       home: IoHome(),
       routes: _buildRoutes(),
+      debugShowCheckedModeBanner: false,
+      theme: Theme.of(context).copyWith(primaryColor: Color(0xFF6200EE)),
     );
   }
 }

@@ -21,7 +21,7 @@ var DotCorrectionData = require('./calibration/dot-correction-data');
 var CalibrationData = require('./calibration/calibration-data');
 
 // Mod Note - to use the physical hardware IP addresses, change this to config.physical
-var config = require('../../config/config.emulator');
+var config = require('../../config/config.physical');
 
 // Main UI elements
 var DisplayUnitList = require('./ui/display-unit-list');

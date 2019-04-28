@@ -37,9 +37,9 @@ class AnypixelHeightDemoState extends State<AnypixelHeightDemo> {
     double left = x;
     double right = 140 - x - 1;
     double top = y;
-    double textRight = 140 - x - 26;
-    int heightInches = 21 + 2 * (42 - y.round());
-    String heightText = '${heightInches ~/ 12}\'${heightInches % 12}';
+    double textRight = 140 - x - 30;
+    int heightInches = 19 + 2 * (42 - y.round());
+    String heightText = '${heightInches ~/ 12}\'${heightInches % 12}"';
 
     return AnypixelBridge(
       child: Container(
@@ -59,7 +59,7 @@ class AnypixelHeightDemoState extends State<AnypixelHeightDemo> {
                 child: Text(
                   heightText,
                   style: Theme.of(context).textTheme.headline.copyWith(
-                        fontSize: 10,
+                        fontSize: 9,
                         color: Colors.white,
                         letterSpacing: 0.9,
                         fontWeight: FontWeight.w500,

@@ -23,15 +23,15 @@ class _SearchDemoState extends State<SearchDemo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         leading: IconButton(
-          tooltip: 'Navigation menu',
-          icon: AnimatedIcon(
-            icon: AnimatedIcons.menu_arrow,
-            color: Colors.white,
-            progress: _delegate.transitionAnimation,
-          ),
-          onPressed: () { }
-        ),
+            tooltip: 'Navigation menu',
+            icon: AnimatedIcon(
+              icon: AnimatedIcons.menu_arrow,
+              color: Colors.white,
+              progress: _delegate.transitionAnimation,
+            ),
+            onPressed: () {}),
         title: const Text('Animals'),
         actions: <Widget>[
           IconButton(
@@ -42,11 +42,11 @@ class _SearchDemoState extends State<SearchDemo> {
                 context: context,
                 delegate: _delegate,
               );
-              if (selected != null && selected != _lastIntegerSelected) {
-                setState(() {
-//                  _lastIntegerSelected = selected;
-                });
-              }
+//              if (selected != null && selected != _lastIntegerSelected) {
+//                setState(() {
+////                  _lastIntegerSelected = selected;
+//                });
+//              }
             },
           ),
           IconButton(
@@ -92,8 +92,40 @@ class _SearchDemoState extends State<SearchDemo> {
 
 class _SearchDemoSearchDelegate extends SearchDelegate<String> {
 //  final List<int> _data = new List<int>.generate(100001, (int i) => i).reversed.toList();
-  final List<String> _data = ['dog', 'cat', 'camel', 'bird', 'butterfly', 'bug'];
-  final List<String> _history = ['horse', 'camel', 'whale', 'butterfly', 'zebra'];
+  final List<String> _data = [
+    'cat',
+    'camel',
+    'bird',
+    'bison',
+    'butterfly',
+    'bug'
+  ];
+  final List<String> _history = ['horse', 'cat', 'whale', 'butterfly', 'zebra'];
+
+  List<String> imageNames = [
+    'bird1',
+    'bird2',
+    'bird3',
+    'bird4',
+    'bird5',
+    'bird6',
+    'bird7',
+    'bird8',
+    'cat1',
+    'cat2',
+    'cat3',
+//      'cat4',
+    'cat5',
+    'cat6',
+    'cat7',
+    'dog1',
+    'dog2',
+    'dog3',
+//      'dog4',
+    'dog5',
+    'dog6',
+    'dog7',
+  ];
 
   @override
   Widget buildLeading(BuildContext context) {
@@ -111,7 +143,6 @@ class _SearchDemoSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-
     final Iterable<String> suggestions = query.isEmpty
         ? _history
         : _data.where((String s) => s.startsWith(query));
@@ -128,30 +159,16 @@ class _SearchDemoSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    if (query == null || !_data.contains(query)) {
-      return new Center(
-        child: new Text(
-          '"$query"\n is not a valid integer between 0 and 100,000.\nTry again.',
-          textAlign: TextAlign.center,
-        ),
-      );
-    }
+    List<Image> images = imageNames
+        .where((String imageName) => imageName.startsWith(query))
+        .map((String imageName) => Image.asset('assets/$imageName.jpg', fit: BoxFit.cover,))
+        .toList();
 
-    return new ListView(
-      children: <Widget>[
-        new _ResultCard(
-          title: '$query 1',
-          searchDelegate: this,
-        ),
-        new _ResultCard(
-          title: '$query 2',
-          searchDelegate: this,
-        ),
-        new _ResultCard(
-          title: '$query 3',
-          searchDelegate: this,
-        ),
-      ],
+    return GridView.count(
+      crossAxisCount: 2,
+      mainAxisSpacing: 4,
+      crossAxisSpacing: 4,
+      children: images,
     );
   }
 
@@ -160,20 +177,20 @@ class _SearchDemoSearchDelegate extends SearchDelegate<String> {
     return <Widget>[
       query.isEmpty
           ? new IconButton(
-        tooltip: 'Voice Search',
-        icon: const Icon(Icons.mic),
-        onPressed: () {
-          query = 'TODO: implement voice input';
-        },
-      )
+              tooltip: 'Voice Search',
+              icon: const Icon(Icons.mic),
+              onPressed: () {
+                query = 'TODO: implement voice input';
+              },
+            )
           : new IconButton(
-        tooltip: 'Clear',
-        icon: const Icon(Icons.clear),
-        onPressed: () {
-          query = '';
-          showSuggestions(context);
-        },
-      )
+              tooltip: 'Clear',
+              icon: const Icon(Icons.clear),
+              onPressed: () {
+                query = '';
+                showSuggestions(context);
+              },
+            )
     ];
   }
 }
@@ -224,7 +241,8 @@ class _SuggestionList extends StatelessWidget {
           title: RichText(
             text: TextSpan(
               text: suggestion.substring(0, query.length),
-              style: theme.textTheme.subhead.copyWith(fontWeight: FontWeight.bold),
+              style:
+                  theme.textTheme.subhead.copyWith(fontWeight: FontWeight.bold),
               children: <TextSpan>[
                 TextSpan(
                   text: suggestion.substring(query.length),

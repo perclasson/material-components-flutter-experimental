@@ -9,7 +9,7 @@ class AnypixelFortnightlyDemo extends StatelessWidget {
     TextStyle style = Theme.of(context)
         .primaryTextTheme
         .headline
-        .copyWith(fontSize: 12, letterSpacing: 1);
+        .copyWith(fontSize: 12, letterSpacing: 1, fontWeight: FontWeight.w500);
     List<Widget> children = [
       SizedBox(
         width: 140,
