@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'foldable.dart';
+import 'tv.dart';
 
 void main() async {
   await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
   ]);
-  return runApp(FortnightlyFoldable());
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  return runApp(FortnightlyTv());
 }

@@ -20,12 +20,12 @@ class FortnightlyFoldableHome extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget horizontalDivider = Container(
       margin: EdgeInsets.only(left: 16, right: 16),
-      color: Colors.black.withOpacity(0.2),
+      color: Colors.black.withOpacity(0.1),
       height: 1,
     );
     Widget verticalDivider = Container(
       margin: EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 16),
-      color: Colors.black.withOpacity(0.2),
+      color: Colors.black.withOpacity(0.1),
       width: 1,
     );
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -35,7 +35,7 @@ class FortnightlyFoldableHome extends StatelessWidget {
         body: Column(
           children: <Widget>[
             SizedBox(
-              height: 60,
+              height: 40,
               child: Row(
                 children: <Widget>[
                   Flexible(
@@ -106,73 +106,95 @@ class FortnightlyFoldableHome extends StatelessWidget {
               ),
             ),
             Flexible(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: Row(
-                  children: <Widget>[
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
+              child: Row(
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    fit: FlexFit.tight,
+                    child: ListView(
+                      children: <Widget>[
+                        SizedBox(height: 32),
+                        MenuItem(
+                          'Front Page',
+                          header: true,
+                        ),
+                        MenuItem('World'),
+                        MenuItem('US'),
+                        MenuItem('Politics'),
+                        MenuItem('Business'),
+                        MenuItem('Tech'),
+                        MenuItem('Sciene'),
+                        MenuItem('Sports'),
+                        MenuItem('Travel'),
+                        MenuItem('Culture'),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                      flex: 2,
                       child: ListView(
                         children: <Widget>[
-                          SizedBox(height: 32),
-                          MenuItem(
-                            'Front Page',
-                            header: true,
+                          ArticlePreview(
+                            imageUrl: 'assets/fortnightly_healthcare.png',
+                            category: 'WORLD',
+                            title:
+                                'The Quiet, Yet Powerful Healthcare Revolution',
+                            lead: true,
                           ),
-                          MenuItem('World'),
-                          MenuItem('US'),
-                          MenuItem('Politics'),
-                          MenuItem('Business'),
-                          MenuItem('Tech'),
-                          MenuItem('Sciene'),
-                          MenuItem('Sports'),
-                          MenuItem('Travel'),
-                          MenuItem('Culture'),
+                          horizontalDivider,
+                          ArticlePreview(
+                            imageUrl: 'assets/fortnightly_war.png',
+                            category: 'POLITICS',
+                            title: 'Divided American Lives During War',
+                          ),
+                          horizontalDivider,
+                          ArticlePreview(
+                            imageUrl: 'assets/fortnightly_gas.png',
+                            category: 'TECH',
+                            title: 'The Future of Gasoline',
+                          ),
                         ],
-                      ),
+                      )),
+                  Flexible(
+                    flex: 1,
+                    fit: FlexFit.tight,
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset('assets/fortnightly_chart.png'),
+                        StockItem(
+                          ticker: 'DIJA',
+                          price: '7,031.21',
+                          percent: -0.48,
+                        ),
+                        Image.asset('assets/fortnightly_dotted_divider.png'),
+                        StockItem(
+                          ticker: 'SP',
+                          price: '1,967.84',
+                          percent: 0.00,
+                        ),
+                        Image.asset('assets/fortnightly_dotted_divider.png'),
+                        StockItem(
+                          ticker: 'Nasdaq',
+                          price: '6,211.46',
+                          percent: 0.52,
+                        ),
+                        Image.asset('assets/fortnightly_dotted_divider.png'),
+                        StockItem(
+                          ticker: 'Nikkei',
+                          price: '5,891',
+                          percent: 1.16,
+                        ),
+                        Image.asset('assets/fortnightly_dotted_divider.png'),
+                        StockItem(
+                          ticker: 'DJ Total',
+                          price: '89.02',
+                          percent: 0.80,
+                        ),
+                        Image.asset('assets/fortnightly_dotted_divider.png'),
+                      ],
                     ),
-                    Flexible(
-                        flex: 2,
-                        child: ListView(
-                          children: <Widget>[
-                            ArticlePreview(
-                              imageUrl: 'assets/fortnightly_healthcare.png',
-                              category: 'WORLD',
-                              title:
-                                  'The Quiet, Yet Powerful Healthcare Revolution',
-                              lead: true,
-                            ),
-                            horizontalDivider,
-                            ArticlePreview(
-                              imageUrl: 'assets/fortnightly_war.png',
-                              category: 'POLITICS',
-                              title: 'Divided American Lives During War',
-                            ),
-                            horizontalDivider,
-                            ArticlePreview(
-                              imageUrl: 'assets/fortnightly_gas.png',
-                              category: 'TECH',
-                              title: 'The Future of Gasoline',
-                            ),
-                          ],
-                        )),
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset('assets/fortnightly_chart.png'),
-                          StockItem(
-                            ticker: 'DIJA',
-                            price: '7,031.211',
-                            percent: -0.48,
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -290,24 +312,28 @@ class StockItem extends StatelessWidget {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(ticker, style: textTheme.subhead.copyWith(fontSize: 14)),
-        Row(
-          children: <Widget>[
-            Text(price),
-            Spacer(),
-            Text(
-              percent > 0 ? '+' : '-',
-              style: textTheme.body2.copyWith(color: percent > 0 ? Colors.greenAccent : Colors.red),
-            ),
-            SizedBox(width: 8),
-            Text(percent.abs().toStringAsFixed(2)),
-          ],
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(ticker, style: textTheme.subhead.copyWith(fontSize: 14)),
+          Row(
+            children: <Widget>[
+              Text(price, style: textTheme.body2.copyWith(color: Colors.black45)),
+              Spacer(),
+              Text(
+                percent > 0 ? '+' : '-',
+                style: textTheme.body2.copyWith(
+                    color: percent > 0 ? Color(0xff20CF63) : Color(0xff661FFF),
+                ),
+              ),
+              SizedBox(width: 4),
+              Text(percent.abs().toStringAsFixed(2) + '%'),
+            ],
+          )
+        ],
+      ),
     );
   }
-
 }

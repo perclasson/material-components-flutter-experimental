@@ -74,6 +74,16 @@ flutter:
           weight: 700
         - asset: fonts/LibreFranklin-ExtraBold.ttf
           weight: 900
+    - family: Merriweather
+      fonts:
+        - asset: fonts/Merriweather-Light.ttf
+          weight: 300
+        - asset: fonts/Merriweather-Regular.ttf
+          weight: 400
+        - asset: fonts/Merriweather-BoldItalic.ttf
+          weight: 700
+          style: italic
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
