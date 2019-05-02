@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class FortnightlyFoldable extends StatelessWidget {
+class FortnightlyFoldableOpen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: buildTheme(context),
-      home: FortnightlyFoldableHome(),
+      home: FortnightlyFoldableOpenHome(),
     );
   }
 }
 
-class FortnightlyFoldableHome extends StatelessWidget {
+class FortnightlyFoldableOpenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget horizontalDivider = Container(

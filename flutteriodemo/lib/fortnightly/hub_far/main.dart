@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'hub_close.dart';
+import 'hub_far.dart';
 
 // Tested on 7" 1024x600
 void main() async {
@@ -10,5 +10,5 @@ void main() async {
     DeviceOrientation.landscapeRight,
   ]);
   SystemChrome.setEnabledSystemUIOverlays([]);
-  return runApp(FortnightlyHubClose());
+  return runApp(FortnightlyHubFar());
 }

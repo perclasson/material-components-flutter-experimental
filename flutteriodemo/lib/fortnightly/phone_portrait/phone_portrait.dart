@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// Tested on Pixel 2
 class FortnightlyPhonePortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -239,21 +240,28 @@ ThemeData buildTheme(BuildContext context) {
       iconTheme: IconTheme.of(context).copyWith(color: Colors.black),
     ),
     textTheme: textTheme.copyWith(
-      // title 2, hashtags
+      // Section header
+      title: textTheme.title.copyWith(
+        fontFamily: 'Merriweather',
+        fontWeight: FontWeight.w700,
+        fontStyle: FontStyle.italic,
+      ),
+      // (title 2), hashtags
       subtitle: textTheme.subtitle.copyWith(
         fontFamily: 'Libre Franklin',
         fontWeight: FontWeight.w400,
         fontSize: 14,
       ),
-      // preview headlines
+      // (headline 3) preview headlines
       headline: textTheme.headline.copyWith(
         fontFamily: 'Libre Franklin',
         fontWeight: FontWeight.w500,
+        fontSize: 16,
       ),
-      // caption 2, category subtitle, stock ticker
+      // (caption 2), category, stock ticker
       subhead: textTheme.subhead.copyWith(
-        fontFamily: 'Libre Franklin',
+        fontFamily: 'Roboto Condensed',
         fontWeight: FontWeight.w700,
-        fontSize: 11,
+        fontSize: 14,
       )));
 }

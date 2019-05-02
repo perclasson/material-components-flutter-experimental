@@ -7,7 +7,7 @@ class FortnightlyWearable extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: buildTheme(context),
-      home: FortnightlyWearable(),
+      home: FortnightlyWearableHome(),
     );
   }
 }
@@ -17,44 +17,64 @@ class FortnightlyWearableHome extends StatelessWidget {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
 
-    return Text('hi');
-
-//    return SafeArea(
-//      child: SizedBox.expand(
-//          child: Column(
-//            children: <Widget>[
-//              Image.asset('assets/fortnightly_title.png'),
-//            ],
-//          )),
-//    );
+    return SafeArea(
+      child: SizedBox.expand(
+        child: Stack(
+          children: <Widget>[
+            Opacity(
+              opacity: 0.4,
+              child: SizedBox.expand(
+                child: Image.asset(
+                  'assets/fortnightly_healthcare.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Stack(
+                children: <Widget>[
+                  Align(
+                      alignment: Alignment.topCenter,
+                      child: Image.asset('assets/fortnightly_title_white.png'),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child:  Icon(
+                      Icons.play_circle_filled,
+                      color: Colors.white,
+                      size: 48,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      'The Quiet, Yet Powerful Healthcare Revolution',
+                      style: textTheme.headline,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
 ThemeData buildTheme(BuildContext context) {
   TextTheme textTheme = Theme.of(context).textTheme;
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
-    appBarTheme: AppBarTheme(
-      color: Colors.white,
-      elevation: 0,
-      iconTheme: IconTheme.of(context).copyWith(color: Colors.black),
-    ),
-    textTheme: textTheme.copyWith(
-      // title 2, hashtags
-      subtitle: textTheme.subtitle.copyWith(
-        fontFamily: 'Libre Franklin',
-        fontWeight: FontWeight.w400,
-        fontSize: 14,
-      ),
-      // preview headlines
-      headline: textTheme.headline.copyWith(
-        fontFamily: 'Libre Franklin',
-        fontWeight: FontWeight.w500,
-      ),
-      // caption 2, category subtitle, stock ticker
-      subhead: textTheme.subhead.copyWith(
-        fontFamily: 'Libre Franklin',
-        fontWeight: FontWeight.w700,
-        fontSize: 11,
-      )));
+      scaffoldBackgroundColor: Colors.black,
+      textTheme: textTheme.copyWith(
+        // preview headlines
+        headline: textTheme.headline.copyWith(
+          fontFamily: 'Raleway',
+          fontWeight: FontWeight.w400,
+          color: Colors.white,
+          fontSize: 15,
+        ),
+      ));
 }

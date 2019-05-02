@@ -1,111 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class FortnightlyHubClose extends StatelessWidget {
+class FortnightlyAdaptive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: buildTheme(context),
-      home: FortnightlyHubCloseHome(),
+      home: FortnightlyAdaptiveHome(),
     );
   }
 }
 
-class FortnightlyHubCloseHome extends StatelessWidget {
+class FortnightlyAdaptiveHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget verticalDivider = Container(
-      margin: EdgeInsets.only(left: 16, right: 16),
-      color: Colors.black.withOpacity(0.2),
-      width: 1,
-      height: 480,
-    );
+
     TextTheme textTheme = Theme.of(context).textTheme;
 
-    return SafeArea(
-      child: Scaffold(
-        body: SizedBox.expand(
-            child: Container(
-          padding: EdgeInsets.only(left: 32),
-          child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Image.asset('assets/fortnightly_title.png'),
-                  SizedBox(
-                    width: 96,
-                    height: 96,
-                    child: Icon(Icons.search, size: 32,),
-                  )
-                ],
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    ArticlePreview(
-                      imageUrl: 'assets/fortnightly_dining.png',
-                      category: 'POLITICS',
-                      title: 'Modern Dining Rituals For Singles',
-                      snippet:
-                          'From the chef\'s table to restaurants for singles, modern cusine gets creative',
-                    ),
-                    verticalDivider,
-                    ArticlePreview(
-                      imageUrl: 'assets/fortnightly_poverty.png',
-                      category: 'US',
-                      title: 'Poverty To Empowerment In Chicago',
-                      snippet:
-                          'How one woman is transforming the lives of underprivileged children',
-                    ),
-                    verticalDivider,
-                    ArticlePreview(
-                      imageUrl: 'assets/fortnightly_veterans.png',
-                      category: 'POLITICS',
-                      title: 'A Fight For Aging Veterans',
-                      snippet: 'For those nearing retirement, benefits are not always guaranteed',
-                    ),
-                    verticalDivider,
-                    Container(
-                      width: 224,
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset('assets/fortnightly_chart_tv.png'),
-                          StockItem(
-                            ticker: 'DIJA',
-                            price: '7,031.21',
-                            percent: -0.48,
-                          ),
-                          StockItem(
-                            ticker: 'SP',
-                            price: '1,967.84',
-                            percent: 0.00,
-                          ),
-                          StockItem(
-                            ticker: 'Nasdaq',
-                            price: '6,211.46',
-                            percent: 0.52,
-                          ),
-                          StockItem(
-                            ticker: 'Nikkei',
-                            price: '5,891',
-                            percent: 1.16,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        )),
-      ),
-    );
+    return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+      final Size size = constraints.biggest;
+      final double aspectRatio = size.width / size.height;
+      if (aspectRatio < 0.7)
+      return Text('test', style: textTheme.headline,);
+    });
   }
+}
+
+class ArticleData {
+  ArticleData({this.imageUrl, this.category, this.title, this.snippet});
+
+  final String imageUrl;
+  final String category;
+  final String title;
+  final String snippet;
 }
 
 class ArticlePreview extends StatelessWidget {
@@ -120,6 +48,10 @@ class ArticlePreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
+
+//    return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+//    }
+
     return Container(
       width: 224,
       alignment: Alignment.topCenter,

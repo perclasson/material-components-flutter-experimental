@@ -21,14 +21,15 @@ class RadicalSliderDemoState extends State<RadicalSliderDemo> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SliderTheme(
-              data: Theme.of(context).sliderTheme.copyWith(
-                    trackHeight: 16,
-                    trackShape: NoTrackShape(),
-                    thumbShape: SliderComponentShape.noThumb,
-                    overlayShape: SliderComponentShape.noOverlay,
-                    activeTickMarkColor: HSLColor.fromAHSL(1, _hueValue, 1, 0.5).toColor(),
-                    inactiveTickMarkColor: Colors.transparent,
-                  ),
+              data: theme.sliderTheme.copyWith(
+                trackHeight: 16,
+                trackShape: NoTrackShape(),
+                thumbShape: SliderComponentShape.noThumb,
+                overlayShape: SliderComponentShape.noOverlay,
+                activeTickMarkColor:
+                    HSLColor.fromAHSL(1, _hueValue, 1, 0.5).toColor(),
+                inactiveTickMarkColor: Colors.transparent,
+              ),
               child: Container(
                 padding: const EdgeInsets.all(16),
                 child: Slider(
@@ -69,13 +70,15 @@ class RadicalSliderDemoState extends State<RadicalSliderDemo> {
                 thumbShape: _CustomTriangularThumbShape(),
                 trackShape: CustomRainbowTriangularTrackShape(),
                 valueIndicatorShape: _CustomTriangularValueIndicatorShape(),
-                valueIndicatorTextStyle: theme.textTheme.body2.copyWith(color: Colors.black87),
+                valueIndicatorTextStyle:
+                    theme.textTheme.body2.copyWith(color: Colors.black87),
               ),
               child: Slider(
                 value: _prismValue,
                 min: 0.0,
                 max: 200.0,
-                semanticFormatterCallback: (double value) => value.round().toString(),
+                semanticFormatterCallback: (double value) =>
+                    value.round().toString(),
                 label: '${_prismValue.round()}',
                 onChanged: (double value) {
                   setState(() {
@@ -170,13 +173,15 @@ class CustomRainbowTriangularTrackShape extends RectangularSliderTrackShape {
       Colors.white,
     ]);
 
-    final Rect leftTrackSegment =
-        Rect.fromLTRB(trackRect.left, trackRect.top, thumbCenter.dx, trackRect.bottom);
-    Paint leftPaint = Paint()..shader = leftRainbowGradient.createShader(leftTrackSegment);
+    final Rect leftTrackSegment = Rect.fromLTRB(
+        trackRect.left, trackRect.top, thumbCenter.dx, trackRect.bottom);
+    Paint leftPaint = Paint()
+      ..shader = leftRainbowGradient.createShader(leftTrackSegment);
     context.canvas.drawPath(_rightArrowTriangle(leftTrackSegment), leftPaint);
-    final Rect rightTrackSegment =
-        Rect.fromLTRB(thumbCenter.dx, trackRect.top, trackRect.right, trackRect.bottom);
-    Paint rightPaint = Paint()..shader = rightGradient.createShader(rightTrackSegment);
+    final Rect rightTrackSegment = Rect.fromLTRB(
+        thumbCenter.dx, trackRect.top, trackRect.right, trackRect.bottom);
+    Paint rightPaint = Paint()
+      ..shader = rightGradient.createShader(rightTrackSegment);
     context.canvas.drawPath(_leftArrowTriangle(rightTrackSegment), rightPaint);
   }
 }
@@ -187,9 +192,11 @@ Path _triangle(double size, Offset thumbCenter, {bool invert = false}) {
   final double halfSide = size / 2.0;
   final double centerHeight = size * height / 3.0;
   final double sign = invert ? -1.0 : 1.0;
-  thumbPath.moveTo(thumbCenter.dx - halfSide, thumbCenter.dy + sign * centerHeight);
+  thumbPath.moveTo(
+      thumbCenter.dx - halfSide, thumbCenter.dy + sign * centerHeight);
   thumbPath.lineTo(thumbCenter.dx, thumbCenter.dy - 2.0 * sign * centerHeight);
-  thumbPath.lineTo(thumbCenter.dx + halfSide, thumbCenter.dy + sign * centerHeight);
+  thumbPath.lineTo(
+      thumbCenter.dx + halfSide, thumbCenter.dy + sign * centerHeight);
   thumbPath.close();
   return thumbPath;
 }
@@ -248,7 +255,8 @@ class _CustomTriangularThumbShape extends SliderComponentShape {
     );
     final double size = _thumbSize * sizeTween.evaluate(enableAnimation);
     final Path thumbPath = _triangle(size, thumbCenter);
-    canvas.drawPath(thumbPath, Paint()..color = colorTween.evaluate(enableAnimation));
+    canvas.drawPath(
+        thumbPath, Paint()..color = colorTween.evaluate(enableAnimation));
   }
 }
 
@@ -290,7 +298,8 @@ class _CustomTriangularValueIndicatorShape extends SliderComponentShape {
       end: _slideUpHeight,
     );
     final double size = _indicatorSize * sizeTween.evaluate(enableAnimation);
-    final Offset slideUpOffset = Offset(0.0, -slideUpTween.evaluate(activationAnimation));
+    final Offset slideUpOffset =
+        Offset(0.0, -slideUpTween.evaluate(activationAnimation));
     final Path thumbPath = _triangle(
       size,
       thumbCenter + slideUpOffset,
@@ -320,11 +329,11 @@ class _CustomTriangularValueIndicatorShape extends SliderComponentShape {
 
 SliderThemeData buildHueSelectorSliderThemeData(BuildContext context) {
   return Theme.of(context).sliderTheme.copyWith(
-    trackHeight: 6,
-    trackShape: HueTrackShape(),
-    thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12),
-    thumbColor: Colors.black,
-    overlayShape: RoundSliderOverlayShape(overlayRadius: 24),
-    overlayColor: Colors.black.withOpacity(0.12),
-  );
+        trackHeight: 6,
+        trackShape: HueTrackShape(),
+        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12),
+        thumbColor: Colors.black,
+        overlayShape: RoundSliderOverlayShape(overlayRadius: 24),
+        overlayColor: Colors.black.withOpacity(0.12),
+      );
 }

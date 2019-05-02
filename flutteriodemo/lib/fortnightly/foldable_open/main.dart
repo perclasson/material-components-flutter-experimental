@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'foldable.dart';
+import 'foldable_open.dart';
 
 void main() async {
   await SystemChrome.setPreferredOrientations([
@@ -10,5 +10,5 @@ void main() async {
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
   ]);
-  return runApp(FortnightlyFoldable());
+  return runApp(FortnightlyFoldableOpen());
 }
