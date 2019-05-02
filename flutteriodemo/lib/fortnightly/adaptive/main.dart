@@ -5,9 +5,11 @@ import 'adaptive.dart';
 
 void main() async {
   await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
   ]);
-  SystemChrome.setEnabledSystemUIOverlays([]);
+//  SystemChrome.setEnabledSystemUIOverlays([]);
   return runApp(FortnightlyAdaptive());
 }

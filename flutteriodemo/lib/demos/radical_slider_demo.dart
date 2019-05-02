@@ -95,16 +95,25 @@ class RadicalSliderDemoState extends State<RadicalSliderDemo> {
 }
 
 class HueTrackShape extends RectangularSliderTrackShape {
+  static const _hueColors = [
+    Color(0xFFFF0000),
+    Color(0xFFFFFF00),
+    Color(0xFF00FF00),
+    Color(0xFF00FFFF),
+    Color(0xFF0000FF),
+    Color(0xFFFF00FF),
+    Color(0xFFFF0000),
+  ];
+
   @override
   void paint(PaintingContext context, Offset offset,
       {RenderBox parentBox,
       SliderThemeData sliderTheme,
       Animation<double> enableAnimation,
       Offset thumbCenter,
-      bool isEnabled,
-      bool isDiscrete,
+      bool isEnabled = false,
+      bool isDiscrete = false,
       TextDirection textDirection}) {
-    // TODO: implement paint
 
     final Rect trackRect = getPreferredRect(
       parentBox: parentBox,
@@ -113,15 +122,7 @@ class HueTrackShape extends RectangularSliderTrackShape {
       isEnabled: isEnabled,
       isDiscrete: isDiscrete,
     );
-    LinearGradient leftRainbowGradient = LinearGradient(colors: <Color>[
-      Color(0xFFFF0000),
-      Color(0xFFFFFF00),
-      Color(0xFF00FF00),
-      Color(0xFF00FFFF),
-      Color(0xFF0000FF),
-      Color(0xFFFF00FF),
-      Color(0xFFFF0000),
-    ]);
+    LinearGradient leftRainbowGradient = LinearGradient(colors: _hueColors);
     Paint paint = Paint()..shader = leftRainbowGradient.createShader(trackRect);
     context.canvas.drawRect(trackRect, paint);
   }
