@@ -23,9 +23,9 @@ class FortnightlyAdaptiveHome extends StatelessWidget {
         builder: (BuildContext context, BoxConstraints constraints) {
       final Size size = constraints.biggest;
       final double aspectRatio = size.width / size.height;
-      if (aspectRatio < 0.7) {
+      if (aspectRatio <= 0.7) {
         return FortnightlyPhonePortraitHome();
-      } else if (aspectRatio < 1.4) {
+      } else if (aspectRatio <= 1) {
         return FortnightlyFoldableOpenHome();
       } else {
         SystemChrome.setEnabledSystemUIOverlays([]);
@@ -35,27 +35,107 @@ class FortnightlyAdaptiveHome extends StatelessWidget {
   }
 }
 
+class FortnightlyFoldableOpenHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 20,
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        margin: EdgeInsets.only(left: 16),
+                        child: Image.asset(
+                          'assets/fortnightly_title.png',
+                          scale: 1.33,
+                        ),
+                      ),
+                      fit: FlexFit.tight,
+                    ),
+                    SizedBox(width: 24),
+                    Flexible(
+                      flex: 2,
+                      child: HashtagBar(),
+                    ),
+                    SizedBox(width: 24),
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: Container(
+                        alignment: Alignment.centerRight,
+                        margin: EdgeInsets.only(right: 16),
+                        child: Icon(Icons.search),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Flexible(
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: NavigationMenu(),
+                    ),
+                    SizedBox(width: 24),
+                    Flexible(
+                      flex: 2,
+                      child: ListView(
+                        children: _buildArticlePreviewItems(context),
+                      ),
+                    ),
+                    SizedBox(width: 24),
+                    Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: ListView(
+                        children: <Widget>[
+                          ..._buildStockItems(context),
+                          SizedBox(height: 32),
+                          ..._buildVideoPreviewItems(context),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class FortnightlyPhonePortraitHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: Drawer(
-          child: SafeArea(
-            child: NavigationMenu(isCloseable: true),
-          ),
+      drawer: Drawer(
+        child: SafeArea(
+          child: NavigationMenu(isCloseable: true),
         ),
-        appBar: AppBar(
-          actions: <Widget>[
-            SizedBox(width: 48, child: Icon(Icons.search)),
-          ],
-          title: Image.asset('assets/fortnightly_title.png'),
-        ),
-        body: ListView(
-          children: <Widget>[
-            HashtagBar(),
-            ..._buildArticlePreviewItems(context),
-          ],
-        ));
+      ),
+      appBar: AppBar(
+        actions: <Widget>[
+          SizedBox(width: 48, child: Icon(Icons.search)),
+        ],
+        title: Image.asset('assets/fortnightly_title.png'),
+      ),
+      body: ListView(
+        children: <Widget>[
+          HashtagBar(),
+          ..._buildArticlePreviewItems(context),
+        ],
+      ),
+    );
   }
 }
 
@@ -127,6 +207,73 @@ List<Widget> _buildArticlePreviewItems(BuildContext context) {
       ),
       time: '2M',
     ),
+    articleDivider,
+  ];
+}
+
+List<Widget> _buildStockItems(BuildContext context) {
+  Widget articleDivider = Container(
+    margin: EdgeInsets.only(top: 16, bottom: 16),
+    color: Colors.black.withOpacity(0.07),
+    height: 1,
+  );
+
+  return [
+    SizedBox(height: 16),
+    Image.asset('assets/fortnightly_chart.png', fit: BoxFit.contain,),
+    articleDivider,
+    StockItem(
+      ticker: 'DIJA',
+      price: '7,031.21',
+      percent: -0.48,
+    ),
+    articleDivider,
+    StockItem(
+      ticker: 'SP',
+      price: '1,967.84',
+      percent: 0.00,
+    ),
+    articleDivider,
+    StockItem(
+      ticker: 'Nasdaq',
+      price: '6,211.46',
+      percent: 0.52,
+    ),
+    articleDivider,
+    StockItem(
+      ticker: 'Nikkei',
+      price: '5,891',
+      percent: 1.16,
+    ),
+    articleDivider,
+    StockItem(
+      ticker: 'DJ Total',
+      price: '89.02',
+      percent: 0.80,
+    ),
+    articleDivider,
+  ];
+}
+
+List<Widget> _buildVideoPreviewItems(BuildContext context) {
+  return [
+    VideoPreview(
+      data: ArticleData(
+        imageUrl: 'assets/fortnightly_feminists.png',
+        category: 'POLITICS',
+        title: 'Feminists Take On Partisanship',
+      ),
+      time: '2:31',
+    ),
+    SizedBox(height: 32),
+    VideoPreview(
+      data: ArticleData(
+        imageUrl: 'assets/fortnightly_bees.png',
+        category: 'US',
+        title: 'Farmland Bees In Short Supply',
+      ),
+      time: '1:37',
+    ),
   ];
 }
 
@@ -182,83 +329,70 @@ class HashtagBar extends StatelessWidget {
   }
 }
 
-class FortnightlyPhonePortraitHomeContent extends StatelessWidget {
+class NavigationMenu extends StatelessWidget {
+  NavigationMenu({this.isCloseable = false});
+
+  final bool isCloseable;
+
   @override
   Widget build(BuildContext context) {
-    Widget horizontalDivider = Container(
-      margin: EdgeInsets.only(left: 16, right: 16),
-      color: Colors.black.withOpacity(0.2),
-      height: 1,
-    );
-    Widget verticalDivider = Container(
-      margin: EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 16),
-      color: Colors.black.withOpacity(0.2),
-      width: 1,
-    );
-    TextTheme textTheme = Theme.of(context).textTheme;
-
     return ListView(
+        children: <Widget>[
+        if (isCloseable)
+    Row(
       children: <Widget>[
-        SizedBox(
-          height: 32,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              SizedBox(width: 16),
-              Center(
-                  child: Text(
-                '#TechDesign',
-                style: textTheme.subtitle,
-              )),
-              verticalDivider,
-              Center(
-                  child: Text(
-                '#Reform',
-                style: textTheme.subtitle,
-              )),
-              verticalDivider,
-              Center(
-                  child: Text(
-                '#HealthcareRevolution',
-                style: textTheme.subtitle,
-              )),
-              verticalDivider,
-              Center(
-                  child: Text(
-                '#GreenArmy',
-                style: textTheme.subtitle,
-              )),
-              verticalDivider,
-              Center(
-                  child: Text(
-                '#Stocks',
-                style: textTheme.subtitle,
-              )),
-              verticalDivider,
-            ],
-          ),
+        IconButton(
+          icon: Icon(Icons.close),
+          onPressed: () => Navigator.pop(context),
         ),
-        LeadArticlePreview(
-            data: ArticleData(
-          imageUrl: 'assets/fortnightly_healthcare.png',
-          category: 'WORLD',
-          title: 'The Quiet, Yet Powerful Healthcare Revolution',
-        )),
-        horizontalDivider,
-        ArticlePreview(
-            data: ArticleData(
-          imageUrl: 'assets/fortnightly_war.png',
-          category: 'POLITICS',
-          title: 'Divided American Lives During War',
-        )),
-        horizontalDivider,
-        ArticlePreview(
-            data: ArticleData(
-          imageUrl: 'assets/fortnightly_gas.png',
-          category: 'TECH',
-          title: 'The Future of Gasoline',
-        )),
+        Image.asset('assets/fortnightly_title.png'),
       ],
+    ),
+    SizedBox(height: 32),
+    MenuItem(
+    'Front Page',
+    header: true,
+    ),
+    MenuItem('World'),
+    MenuItem('US'),
+    MenuItem('Politics'),
+    MenuItem('Business'),
+    MenuItem('Tech'),
+    MenuItem('Sciene'),
+    MenuItem('Sports'),
+    MenuItem('Travel'),
+    MenuItem('Culture'),
+    ],
+    );
+  }
+}
+
+class MenuItem extends StatelessWidget {
+  MenuItem(this.title, {this.header = false});
+
+  final String title;
+  final bool header;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 8,
+        bottom: 8,
+      ),
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            width: 64,
+            child: header ? null : Icon(Icons.arrow_drop_down),
+          ),
+          Text(title,
+              style: Theme.of(context).textTheme.subhead.copyWith(
+                fontWeight: FontWeight.w600,
+                fontSize: 20,
+              )),
+        ],
+      ),
     );
   }
 }
@@ -353,7 +487,7 @@ class ArticlePreview extends StatelessWidget {
   }
 }
 
-class ExpandedArticlePreview extends StatelessWidget {
+class ExpandedArticlePreview extends StatelessWidget   {
   ExpandedArticlePreview({this.data});
 
   final ArticleData data;
@@ -407,106 +541,63 @@ class StockItem extends StatelessWidget {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
 
-    return Padding(
-      padding: const EdgeInsets.only(top: 16, bottom: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(ticker, style: textTheme.caption),
-          SizedBox(height: 2),
-          Row(
-            children: <Widget>[
-              Text(price,
-                  style: textTheme.caption
-                      .copyWith(color: Colors.white.withOpacity(0.75))),
-              Spacer(),
-              Text(
-                percent > 0 ? '+' : '-',
-                style: textTheme.caption.copyWith(
-                  fontSize: 12,
-                  color: percent > 0 ? Color(0xff20CF63) : Color(0xff661FFF),
-                ),
-              ),
-              SizedBox(width: 4),
-              Text(
-                percent.abs().toStringAsFixed(2) + '%',
-                style: textTheme.caption.copyWith(
-                  fontSize: 10,
-                  color: Colors.white.withOpacity(0.75),
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class NavigationMenu extends StatelessWidget {
-  NavigationMenu({this.isCloseable = false});
-
-  final bool isCloseable;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        if (isCloseable)
-          Row(
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.close),
-                onPressed: () => Navigator.pop(context),
+        Text(ticker, style: textTheme.subhead),
+        SizedBox(height: 2),
+        Row(
+          children: <Widget>[
+            Text(price,
+                style: textTheme.subtitle
+                    .copyWith(color: Colors.black.withOpacity(0.75))),
+            Spacer(),
+            Text(
+              percent > 0 ? '+' : '-',
+              style: textTheme.subtitle.copyWith(
+                fontSize: 12,
+                color: percent > 0 ? Color(0xff20CF63) : Color(0xff661FFF),
               ),
-              Image.asset('assets/fortnightly_title.png'),
-            ],
-          ),
-        SizedBox(height: 32),
-        MenuItem(
-          'Front Page',
-          header: true,
-        ),
-        MenuItem('World'),
-        MenuItem('US'),
-        MenuItem('Politics'),
-        MenuItem('Business'),
-        MenuItem('Tech'),
-        MenuItem('Sciene'),
-        MenuItem('Sports'),
-        MenuItem('Travel'),
-        MenuItem('Culture'),
+            ),
+            SizedBox(width: 4),
+            Text(
+              percent.abs().toStringAsFixed(2) + '%',
+              style: textTheme.caption.copyWith(
+                fontSize: 12,
+                color: Colors.black.withOpacity(0.75),
+              ),
+            ),
+          ],
+        )
       ],
     );
   }
 }
 
-class MenuItem extends StatelessWidget {
-  MenuItem(this.title, {this.header = false});
+class VideoPreview extends StatelessWidget {
+  VideoPreview({this.data, this.time});
 
-  final String title;
-  final bool header;
+  final ArticleData data;
+  final String time;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 8,
-        bottom: 8,
-      ),
-      child: Row(
-        children: <Widget>[
-          SizedBox(
-            width: 64,
-            child: header ? null : Icon(Icons.arrow_drop_down),
-          ),
-          Text(title,
-              style: Theme.of(context).textTheme.subhead.copyWith(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                  )),
-        ],
-      ),
+    TextTheme textTheme = Theme.of(context).textTheme;
+
+    return Column(
+      children: <Widget>[
+        SizedBox(width: double.infinity, child: Image.asset(data.imageUrl, fit: BoxFit.contain)),
+        SizedBox(height: 4),
+        Row(
+          children: <Widget>[
+            Text(data.category, style: textTheme.subhead),
+            Spacer(),
+            Text(time, style: textTheme.body2)
+          ],
+        ),
+        SizedBox(height: 4),
+        Text(data.title, style: textTheme.headline),
+      ],
     );
   }
 }
