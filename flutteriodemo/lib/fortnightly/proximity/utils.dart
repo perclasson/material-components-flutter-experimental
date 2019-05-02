@@ -24,12 +24,10 @@ Uint8List concatenatePlanes(List<Plane> planes) {
 
 FirebaseVisionImageMetadata buildMetaData(
   CameraImage image,
-  ImageRotation rotation,
 ) {
   return FirebaseVisionImageMetadata(
     rawFormat: image.format.raw,
     size: Size(image.width.toDouble(), image.height.toDouble()),
-    rotation: rotation,
     planeData: image.planes.map(
       (Plane plane) {
         return FirebaseVisionImagePlaneMetadata(
@@ -45,26 +43,11 @@ FirebaseVisionImageMetadata buildMetaData(
 Future<dynamic> detect(
   CameraImage image,
   HandleDetection handleDetection,
-  ImageRotation rotation,
 ) async {
   return handleDetection(
     FirebaseVisionImage.fromBytes(
       concatenatePlanes(image.planes),
-      buildMetaData(image, rotation),
+      buildMetaData(image),
     ),
   );
-}
-
-ImageRotation rotationIntToImageRotation(int rotation) {
-  switch (rotation) {
-    case 0:
-      return ImageRotation.rotation0;
-    case 90:
-      return ImageRotation.rotation90;
-    case 180:
-      return ImageRotation.rotation180;
-    default:
-      assert(rotation == 270);
-      return ImageRotation.rotation270;
-  }
 }

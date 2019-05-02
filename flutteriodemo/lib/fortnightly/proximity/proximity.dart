@@ -30,9 +30,6 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
 
   void _initializeCamera() async {
     CameraDescription description = await getCamera(_direction);
-    ImageRotation rotation = rotationIntToImageRotation(
-      description.sensorOrientation,
-    );
 
     setState(() {
       _camera = CameraController(
@@ -50,7 +47,7 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
 
       _isDetecting = true;
 
-      detect(image, FirebaseVision.instance.faceDetector().processImage, rotation).then(
+      detect(image, FirebaseVision.instance.faceDetector().processImage).then(
             (dynamic result) {
           setState(() {
             _scanResults = result;
