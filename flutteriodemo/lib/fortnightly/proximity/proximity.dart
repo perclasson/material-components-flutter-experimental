@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:async';
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/foundation.dart';
@@ -20,7 +21,8 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
   dynamic _scanResults;
   CameraController _camera;
   bool _isDetecting = false;
-  CameraLensDirection _direction = CameraLensDirection.front;
+  bool _isDisplayingClose = false;
+  bool _isLocked = false;
 
   @override
   void initState() {
@@ -29,7 +31,7 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
   }
 
   void _initializeCamera() async {
-    CameraDescription description = await getCamera(_direction);
+    CameraDescription description = await getCamera(CameraLensDirection.front);
 
     setState(() {
       _camera = CameraController(
@@ -43,7 +45,7 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
     await _camera.initialize();
 
     _camera.startImageStream((CameraImage image) {
-      if (_isDetecting) return;
+      if (_isDetecting || _isLocked) return;
 
       _isDetecting = true;
 
@@ -63,11 +65,18 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
     });
   }
 
+  void _lockUpdates() {
+    _isLocked = true;
+    Timer(Duration(seconds: 2), () {
+      _isLocked = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: Since the detection is a little buggy, prevent the demo from changing by using a timer.
     // TODO: Add a fade between the 2 demos if possible.
-    // TODO: Add a check for a face size if possible.
+    // TODO: Add a check for a face size if possible using the boundingBox.
+
     if (_scanResults == null ||
         _camera == null ||
         !_camera.value.isInitialized) {
@@ -77,10 +86,20 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
     if (_scanResults is List<Face>) {
       List<Face> faces = _scanResults;
       if (faces.isNotEmpty) {
+        // Prevent screen from flickering between states.
+        if (!_isDisplayingClose) {
+          _lockUpdates();
+        }
+        _isDisplayingClose = true;
         return FortnightlyHubClose();
       }
     }
 
+    // Prevent screen from flickering between states.
+    if (_isDisplayingClose) {
+      _lockUpdates();
+    }
+    _isDisplayingClose = false;
     return FortnightlyHubFar();
   }
 }
