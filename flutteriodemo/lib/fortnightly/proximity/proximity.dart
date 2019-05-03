@@ -135,9 +135,9 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
         if (_camera != null)
           Positioned(
             right: 12,
-            width: 100,
+            width: 200,
             bottom: 12,
-            height: 100,
+            height: 200,
             child: Transform.rotate(
               angle: -math.pi / 2,
               child: CameraPreview(_camera),

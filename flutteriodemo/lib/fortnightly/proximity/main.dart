@@ -3,7 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'proximity.dart';
 
-void main() => runApp(FortnightlyProximity());
+void main() {
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  return runApp(FortnightlyProximity());
+}
