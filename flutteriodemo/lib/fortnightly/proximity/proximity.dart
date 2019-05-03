@@ -103,8 +103,6 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
         if (faceArea >= imageArea * _proximityThreshold) {
           return true;
         }
-        _isDisplayingClose = true;
-        return FortnightlyCounterClose();
       }
     }
 
@@ -129,25 +127,23 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
       _isDisplayingClose = false;
       fortnightly = FortnightlyCounterFar();
     }
-    _isDisplayingClose = false;
-    return FortnightlyCounterFar();
 
-//    return Stack(
-//      textDirection: TextDirection.ltr,
-//      children: <Widget>[
-//        fortnightly,
-//        if (_camera != null)
-//          Positioned(
-//            right: 12,
-//            width: 200,
-//            bottom: 12,
-//            height: 200,
-//            child: Transform.rotate(
-//              angle: -math.pi / 2,
-//              child: CameraPreview(_camera),
-//            ),
-//          ),
-//      ],
-//    );
+    return Stack(
+      textDirection: TextDirection.ltr,
+      children: <Widget>[
+        fortnightly,
+        if (_camera != null)
+          Positioned(
+            right: 12,
+            width: 200,
+            bottom: 12,
+            height: 200,
+            child: Transform.rotate(
+              angle: -math.pi / 2,
+              child: CameraPreview(_camera),
+            ),
+          ),
+      ],
+    );
   }
 }
