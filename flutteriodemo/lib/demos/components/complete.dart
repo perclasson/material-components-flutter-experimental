@@ -1,66 +1,60 @@
-import "dart:math" show pi, sqrt;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'dart:math';
 
-class RadicalSliderDemo extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => RadicalSliderDemoState();
+void main() {
+  return runApp(MaterialApp(home: ComponentsDemo()));
 }
 
-class RadicalSliderDemoState extends State<RadicalSliderDemo> {
-  double _countValue = 6;
-  double _hueValue = 50;
-  double _prismValue = 100;
+class ComponentsDemo extends StatefulWidget {
+  @override
+  _ComponentsDemoState createState() => _ComponentsDemoState();
+}
+
+class _ComponentsDemoState extends State<ComponentsDemo> {
+  double _value = 0.5;
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
     return Scaffold(
-      body: SafeArea(
+      backgroundColor: Colors.grey,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 64),
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
             SliderTheme(
-              data: buildHueSelectorSliderThemeData(context),
+              data: SliderThemeData(
+                trackHeight: 8,
+                thumbColor: Colors.black,
+                overlayColor: Colors.black.withOpacity(0.12),
+                trackShape: _HueTrackShape(),
+              ),
               child: Slider(
-                value: _hueValue,
+                value: _value,
                 min: 0,
                 max: 360,
-                onChanged: (double value) {
+                onChanged: (double newValue) {
                   setState(() {
-                    _hueValue = value;
+                    _value = newValue;
                   });
                 },
               ),
             ),
-            SizedBox(height: 64),
-            SliderTheme(
-              data: theme.sliderTheme.copyWith(
-                trackHeight: 16,
-                overlayColor: Colors.black12,
-                thumbColor: Colors.black,
-                showValueIndicator: ShowValueIndicator.always,
-                valueIndicatorColor: Colors.black,
-                thumbShape: _CustomTriangularThumbShape(),
-                trackShape: _CustomRainbowTriangularTrackShape(),
-                valueIndicatorShape: _CustomTriangularValueIndicatorShape(),
-                valueIndicatorTextStyle:
-                    theme.textTheme.body2.copyWith(color: Colors.black87),
+            TextField(
+              maxLines: 2,
+              minLines: 1,
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
               ),
-              child: Slider(
-                value: _prismValue,
-                min: 0.0,
-                max: 200.0,
-                semanticFormatterCallback: (double value) =>
-                    value.round().toString(),
-                label: '${_prismValue.round()}',
-                onChanged: (double value) {
-                  setState(() {
-                    _prismValue = value;
-                  });
-                },
-              ),
+              cursorColor: HSLColor.fromAHSL(1, _value, 1, 0.5).toColor(),
+              cursorWidth: 3,
+              textInputAction: TextInputAction.done,
             ),
           ],
         ),
@@ -83,15 +77,16 @@ class _HueTrackShape extends RectangularSliderTrackShape {
   @override
   void paint(PaintingContext context, Offset offset,
       {RenderBox parentBox,
-      SliderThemeData sliderTheme,
-      Animation<double> enableAnimation,
-      Offset thumbCenter,
-      bool isEnabled = false,
-      bool isDiscrete = false,
-      TextDirection textDirection}) {
+        SliderThemeData sliderTheme,
+        Animation<double> enableAnimation,
+        Offset thumbCenter,
+        bool isEnabled = false,
+        bool isDiscrete = false,
+        TextDirection textDirection}) {
 
     final Rect trackRect = getPreferredRect(
       parentBox: parentBox,
+      offset: offset,
       sliderTheme: sliderTheme,
     );
     LinearGradient leftRainbowGradient = LinearGradient(colors: _hueColors);
@@ -99,20 +94,6 @@ class _HueTrackShape extends RectangularSliderTrackShape {
     context.canvas.drawRect(trackRect, paint);
   }
 }
-
-
-SliderThemeData buildHueSelectorSliderThemeData(BuildContext context) {
-  return Theme.of(context).sliderTheme.copyWith(
-    trackHeight: 6,
-    trackShape: _HueTrackShape(),
-    thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12),
-    thumbColor: Colors.black,
-    overlayShape: RoundSliderOverlayShape(overlayRadius: 24),
-    overlayColor: Colors.black.withOpacity(0.12),
-  );
-}
-
-
 
 Path _triangle(double size, Offset thumbCenter, {bool invert = false}) {
   final Path thumbPath = Path();
@@ -209,17 +190,17 @@ class _CustomTriangularThumbShape extends SliderComponentShape {
 
   @override
   void paint(
-    PaintingContext context,
-    Offset thumbCenter, {
-    Animation<double> activationAnimation,
-    Animation<double> enableAnimation,
-    bool isDiscrete,
-    TextPainter labelPainter,
-    RenderBox parentBox,
-    SliderThemeData sliderTheme,
-    TextDirection textDirection,
-    double value,
-  }) {
+      PaintingContext context,
+      Offset thumbCenter, {
+        Animation<double> activationAnimation,
+        Animation<double> enableAnimation,
+        bool isDiscrete,
+        TextPainter labelPainter,
+        RenderBox parentBox,
+        SliderThemeData sliderTheme,
+        TextDirection textDirection,
+        double value,
+      }) {
     final Canvas canvas = context.canvas;
     final ColorTween colorTween = ColorTween(
       begin: sliderTheme.disabledThumbColor,
@@ -249,17 +230,17 @@ class _CustomTriangularValueIndicatorShape extends SliderComponentShape {
 
   @override
   void paint(
-    PaintingContext context,
-    Offset thumbCenter, {
-    Animation<double> activationAnimation,
-    Animation<double> enableAnimation,
-    bool isDiscrete,
-    TextPainter labelPainter,
-    RenderBox parentBox,
-    SliderThemeData sliderTheme,
-    TextDirection textDirection,
-    double value,
-  }) {
+      PaintingContext context,
+      Offset thumbCenter, {
+        Animation<double> activationAnimation,
+        Animation<double> enableAnimation,
+        bool isDiscrete,
+        TextPainter labelPainter,
+        RenderBox parentBox,
+        SliderThemeData sliderTheme,
+        TextDirection textDirection,
+        double value,
+      }) {
     final Canvas canvas = context.canvas;
     final ColorTween enableColor = ColorTween(
       begin: sliderTheme.disabledThumbColor,
@@ -271,7 +252,7 @@ class _CustomTriangularValueIndicatorShape extends SliderComponentShape {
     );
     final double size = _indicatorSize * sizeTween.evaluate(enableAnimation);
     final Offset slideUpOffset =
-        Offset(0.0, -slideUpTween.evaluate(activationAnimation));
+    Offset(0.0, -slideUpTween.evaluate(activationAnimation));
     final Path thumbPath = _triangle(
       size,
       thumbCenter + slideUpOffset,
