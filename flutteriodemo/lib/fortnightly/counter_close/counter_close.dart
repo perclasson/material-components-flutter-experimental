@@ -223,7 +223,7 @@ class StockItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(ticker, style: textTheme.caption),
+          Text(ticker, style: textTheme.subhead),
           SizedBox(height: 2),
           Row(
             children: <Widget>[

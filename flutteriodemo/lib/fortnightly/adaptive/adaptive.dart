@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:material_flutter_io19/fortnightly/counter_close/counter_close.dart';
+import 'package:material_flutter_io19/fortnightly/tv/tv.dart';
 
 class FortnightlyAdaptive extends StatelessWidget {
   @override
@@ -12,18 +14,31 @@ class FortnightlyAdaptive extends StatelessWidget {
 }
 
 class FortnightlyAdaptiveHome extends StatelessWidget {
+  static bool isTv = false;
+  static bool isCounterTop = false;
+  static bool isPhone = true;
+  static bool isFoldable = true;
+
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
+    if (isFoldable) {
+      return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      final Size size = constraints.biggest;
-      final double aspectRatio = size.width / size.height;
-      if (aspectRatio <= 0.7) {
-        return FortnightlyPortraitHome();
-      } else {
-        return FortnightlyUnfoldedHome();
-      }
-    });
+          final Size size = constraints.biggest;
+          final double aspectRatio = size.width / size.height;
+          if (aspectRatio <= 0.7) {
+            return FortnightlyPortraitHome();
+          } else {
+            return FortnightlyUnfoldedHome();
+          }
+        });
+    } else if (isCounterTop) {
+      return FortnightlyCounterClose();
+    } else if (isTv) {
+      return FortnightlyTvHome();
+    } else {
+      return FortnightlyPortraitHome();
+    }
   }
 }
 
