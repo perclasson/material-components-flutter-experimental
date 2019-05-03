@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:math' as math;
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/foundation.dart';
@@ -11,6 +12,13 @@ import 'package:flutter/material.dart';
 import 'utils.dart';
 import '../counter_close/counter_close.dart';
 import '../counter_far/counter_far.dart';
+
+// Adjust this number to work for the demo.
+const double _proximityThreshold = 0.1;
+
+// Set this to true to ignore any face size math and simply use the presence
+// of a face as the deciding factor.
+const bool _forceForAnySizeFace = false;
 
 class FortnightlyProximity extends StatefulWidget {
   @override
@@ -36,9 +44,7 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
     setState(() {
       _camera = CameraController(
         description,
-        defaultTargetPlatform == TargetPlatform.iOS
-            ? ResolutionPreset.low
-            : ResolutionPreset.medium,
+        ResolutionPreset.low,
       );
     });
 
@@ -72,34 +78,76 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: Add a fade between the 2 demos if possible.
-    // TODO: Add a check for a face size if possible using the boundingBox.
-
+  bool _isCloseExperience() {
     if (_scanResults == null ||
         _camera == null ||
         !_camera.value.isInitialized) {
-      return FortnightlyCounterFar();
+      return false;
     }
 
     if (_scanResults is List<Face>) {
       List<Face> faces = _scanResults;
-      if (faces.isNotEmpty) {
-        // Prevent screen from flickering between states.
-        if (!_isDisplayingClose) {
-          _lockUpdates();
+      if (faces.isNotEmpty && _forceForAnySizeFace) {
+        return true;
+      }
+
+      final Size imageSize = Size(
+        _camera.value.previewSize.height,
+        _camera.value.previewSize.width,
+      );
+      final double imageArea = imageSize.width * imageSize.height;
+
+      for (Face face in faces) {
+        final double faceArea = face.boundingBox.width * face.boundingBox.height;
+        // Only display the close experience when the face is at least `_proximityThreshold` of the visible space.
+        if (faceArea >= imageArea * _proximityThreshold) {
+          return true;
         }
         _isDisplayingClose = true;
         return FortnightlyCounterClose();
       }
     }
 
-    // Prevent screen from flickering between states.
-    if (_isDisplayingClose) {
-      _lockUpdates();
+    return false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Add a fade between the 2 demos if possible.
+    Widget fortnightly;
+    if (_isCloseExperience()) {
+      if (!_isDisplayingClose) {
+        _lockUpdates();
+      }
+      _isDisplayingClose = true;
+      fortnightly = FortnightlyCounterClose();
+    } else {
+      // Prevent screen from flickering between states.
+      if (_isDisplayingClose) {
+        _lockUpdates();
+      }
+      _isDisplayingClose = false;
+      fortnightly = FortnightlyCounterFar();
     }
     _isDisplayingClose = false;
     return FortnightlyCounterFar();
+
+//    return Stack(
+//      textDirection: TextDirection.ltr,
+//      children: <Widget>[
+//        fortnightly,
+//        if (_camera != null)
+//          Positioned(
+//            right: 12,
+//            width: 200,
+//            bottom: 12,
+//            height: 200,
+//            child: Transform.rotate(
+//              angle: -math.pi / 2,
+//              child: CameraPreview(_camera),
+//            ),
+//          ),
+//      ],
+//    );
   }
 }
