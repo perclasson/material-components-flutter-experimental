@@ -31,6 +31,7 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
   bool _isDetecting = false;
   bool _isDisplayingClose = false;
   bool _isLocked = false;
+  double _faceAreaRatio = 0;
 
   @override
   void initState() {
@@ -99,13 +100,15 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
 
       for (Face face in faces) {
         final double faceArea = face.boundingBox.width * face.boundingBox.height;
+        _faceAreaRatio = faceArea / imageArea;
         // Only display the close experience when the face is at least `_proximityThreshold` of the visible space.
-        if (faceArea >= imageArea * _proximityThreshold) {
+        if (_faceAreaRatio >= _proximityThreshold) {
           return true;
         }
       }
     }
 
+    _faceAreaRatio = 0;
     return false;
   }
 
@@ -128,6 +131,7 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
       fortnightly = FortnightlyCounterFar();
     }
 
+    final Color ratioColor = _faceAreaRatio >= _proximityThreshold ? Colors.green : Colors.red;
     return Stack(
       textDirection: TextDirection.ltr,
       children: <Widget>[
@@ -141,6 +145,23 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
             child: Transform.rotate(
               angle: -math.pi / 2,
               child: CameraPreview(_camera),
+            ),
+          ),
+        if (_camera != null)
+          Positioned(
+            right: 12,
+            width: 40,
+            bottom: 12,
+            height: 20,
+            child: Container(
+              color: Colors.white70,
+              child: Center(
+                child: Text(
+                  '${_faceAreaRatio.toStringAsFixed(2)}',
+                  style: Theme.of(context).textTheme.body1.apply(color: ratioColor),
+                  textDirection: TextDirection.ltr,
+                ),
+              ),
             ),
           ),
       ],
