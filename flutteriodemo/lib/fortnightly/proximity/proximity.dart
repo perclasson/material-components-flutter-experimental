@@ -56,7 +56,8 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
 
       _isDetecting = true;
 
-      detect(image, FirebaseVision.instance.faceDetector().processImage).then(
+      final FaceDetectorOptions options = FaceDetectorOptions(minFaceSize: 0.02);
+      detect(image, FirebaseVision.instance.faceDetector(options).processImage).then(
             (dynamic result) {
           setState(() {
             _scanResults = result;
@@ -106,9 +107,12 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
           return true;
         }
       }
+
+      if (faces.isEmpty) {
+        _faceAreaRatio = 0;
+      }
     }
 
-    _faceAreaRatio = 0;
     return false;
   }
 
