@@ -10,6 +10,5 @@ void main() async {
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
   ]);
-//  SystemChrome.setEnabledSystemUIOverlays([]);
   return runApp(FortnightlyAdaptive());
 }

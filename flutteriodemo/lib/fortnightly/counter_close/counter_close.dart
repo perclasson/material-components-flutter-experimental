@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class FortnightlyHubClose extends StatelessWidget {
+class FortnightlyCounterClose extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: buildTheme(context),
-      home: FortnightlyHubCloseHome(),
+      home: FortnightlyCounterCloseHome(),
     );
   }
 }
 
-class FortnightlyHubCloseHome extends StatelessWidget {
+class FortnightlyCounterCloseHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget verticalDivider = Container(
@@ -108,6 +108,59 @@ class FortnightlyHubCloseHome extends StatelessWidget {
   }
 }
 
+class ArticleData {
+  ArticleData({this.imageUrl, this.category, this.title, this.snippet});
+
+  final String imageUrl;
+  final String category;
+  final String title;
+  final String snippet;
+}
+
+
+class ExpandedArticlePreview extends StatelessWidget   {
+  ExpandedArticlePreview({this.data});
+
+  final ArticleData data;
+
+  @override
+  Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+
+    return Container(
+      width: 224,
+      alignment: Alignment.topCenter,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            child: Image.asset(
+              data.imageUrl,
+              fit: BoxFit.fitWidth,
+            ),
+          ),
+          SizedBox(height: 12),
+          Text(
+            data.category,
+            style: textTheme.subhead,
+          ),
+          SizedBox(height: 12),
+          Text(
+            data.title,
+            style: textTheme.headline,
+          ),
+          SizedBox(height: 4),
+          Text(
+            data.snippet,
+            style: textTheme.body1,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class ArticlePreview extends StatelessWidget {
   ArticlePreview({this.imageUrl, this.category, this.title, this.snippet, this.lead = false});
 
@@ -198,8 +251,6 @@ class StockItem extends StatelessWidget {
     );
   }
 }
-
-
 
 ThemeData buildTheme(BuildContext context) {
   TextTheme textTheme = Theme.of(context).textTheme;

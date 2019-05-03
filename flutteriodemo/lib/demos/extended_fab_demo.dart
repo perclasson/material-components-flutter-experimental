@@ -15,23 +15,26 @@ class ExtendedFabDemoState extends State<ExtendedFabDemo> {
         // define context of Navigator.push()
         return FloatingActionButton.extended(
           icon: const Icon(Icons.add),
-          label: const Text('I will resize when tapped'),
+          label: const Text('Tap to go to the wolf screen'),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute<void>(
               builder: (BuildContext context) {
                 return Scaffold(
+                  appBar: AppBar(leading: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                      child: Icon(Icons.arrow_back),
+                  ),
+                  ),
                   floatingActionButton: new FloatingActionButton.extended(
+                    backgroundColor: Color(0x0ff6600dd),
                     icon: const Icon(Icons.add),
                     label: const Text('Cool'),
                     onPressed: () {},
                   ),
-                  body: new Center(
-                    child: new RaisedButton(
-                      child: const Text('Back'),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
+                  body: Center(
+                    child: Image.asset('assets/dog2.jpg'),
                   ),
                 );
               },
@@ -39,8 +42,8 @@ class ExtendedFabDemoState extends State<ExtendedFabDemo> {
           },
         );
       }),
-      body: const Center(
-        child: const Text('Tap the FAB'),
+      body: Center(
+        child: Icon(Icons.pets),
       ),
     );
   }

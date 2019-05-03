@@ -9,8 +9,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'utils.dart';
-import '../hub_close/hub_close.dart';
-import '../hub_far/hub_far.dart';
+import '../counter_close/counter_close.dart';
+import '../counter_far/counter_far.dart';
 
 class FortnightlyProximity extends StatefulWidget {
   @override
@@ -80,7 +80,7 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
     if (_scanResults == null ||
         _camera == null ||
         !_camera.value.isInitialized) {
-      return FortnightlyHubFar();
+      return FortnightlyCounterFar();
     }
 
     if (_scanResults is List<Face>) {
@@ -91,7 +91,7 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
           _lockUpdates();
         }
         _isDisplayingClose = true;
-        return FortnightlyHubClose();
+        return FortnightlyCounterClose();
       }
     }
 
@@ -100,6 +100,6 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
       _lockUpdates();
     }
     _isDisplayingClose = false;
-    return FortnightlyHubFar();
+    return FortnightlyCounterFar();
   }
 }

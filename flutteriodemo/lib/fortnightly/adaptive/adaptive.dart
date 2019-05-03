@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:material_flutter_io19/fortnightly/foldable_open/foldable_open.dart';
-import 'package:material_flutter_io19/fortnightly/hub_close/hub_close.dart';
-import 'package:material_flutter_io19/fortnightly/phone_portrait/phone_portrait.dart';
 
 class FortnightlyAdaptive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       theme: buildTheme(context),
       home: FortnightlyAdaptiveHome(),
     );
@@ -24,18 +19,15 @@ class FortnightlyAdaptiveHome extends StatelessWidget {
       final Size size = constraints.biggest;
       final double aspectRatio = size.width / size.height;
       if (aspectRatio <= 0.7) {
-        return FortnightlyPhonePortraitHome();
-      } else if (aspectRatio <= 1) {
-        return FortnightlyFoldableOpenHome();
+        return FortnightlyPortraitHome();
       } else {
-        SystemChrome.setEnabledSystemUIOverlays([]);
-        return FortnightlyHubCloseHome();
+        return FortnightlyUnfoldedHome();
       }
     });
   }
 }
 
-class FortnightlyFoldableOpenHome extends StatelessWidget {
+class FortnightlyUnfoldedHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -88,7 +80,7 @@ class FortnightlyFoldableOpenHome extends StatelessWidget {
                     Flexible(
                       flex: 2,
                       child: ListView(
-                        children: _buildArticlePreviewItems(context),
+                        children: buildArticlePreviewItems(context),
                       ),
                     ),
                     SizedBox(width: 24),
@@ -97,9 +89,9 @@ class FortnightlyFoldableOpenHome extends StatelessWidget {
                       fit: FlexFit.tight,
                       child: ListView(
                         children: <Widget>[
-                          ..._buildStockItems(context),
+                          ...buildStockItems(context),
                           SizedBox(height: 32),
-                          ..._buildVideoPreviewItems(context),
+                          ...buildVideoPreviewItems(context),
                         ],
                       ),
                     ),
@@ -114,7 +106,7 @@ class FortnightlyFoldableOpenHome extends StatelessWidget {
   }
 }
 
-class FortnightlyPhonePortraitHome extends StatelessWidget {
+class FortnightlyPortraitHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,14 +124,14 @@ class FortnightlyPhonePortraitHome extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           HashtagBar(),
-          ..._buildArticlePreviewItems(context),
+          ...buildArticlePreviewItems(context),
         ],
       ),
     );
   }
 }
 
-List<Widget> _buildArticlePreviewItems(BuildContext context) {
+List<Widget> buildArticlePreviewItems(BuildContext context) {
   Widget articleDivider = Container(
     margin: EdgeInsets.only(left: 16, right: 16),
     color: Colors.black.withOpacity(0.07),
@@ -211,7 +203,7 @@ List<Widget> _buildArticlePreviewItems(BuildContext context) {
   ];
 }
 
-List<Widget> _buildStockItems(BuildContext context) {
+List<Widget> buildStockItems(BuildContext context) {
   Widget articleDivider = Container(
     margin: EdgeInsets.only(top: 16, bottom: 16),
     color: Colors.black.withOpacity(0.07),
@@ -255,7 +247,7 @@ List<Widget> _buildStockItems(BuildContext context) {
   ];
 }
 
-List<Widget> _buildVideoPreviewItems(BuildContext context) {
+List<Widget> buildVideoPreviewItems(BuildContext context) {
   return [
     VideoPreview(
       data: ArticleData(
@@ -487,7 +479,8 @@ class ArticlePreview extends StatelessWidget {
   }
 }
 
-class ExpandedArticlePreview extends StatelessWidget   {
+// Same data as ArticlePreview but with a snippet, listed in a column.
+class ExpandedArticlePreview extends StatelessWidget  {
   ExpandedArticlePreview({this.data});
 
   final ArticleData data;

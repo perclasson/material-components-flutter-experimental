@@ -2,98 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:math';
 
-void main() {
-  return runApp(MaterialApp(home: ComponentsDemo()));
-}
-
-class ComponentsDemo extends StatefulWidget {
-  @override
-  _ComponentsDemoState createState() => _ComponentsDemoState();
-}
-
-class _ComponentsDemoState extends State<ComponentsDemo> {
-  double _value = 0.5;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey,
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            SliderTheme(
-              data: SliderThemeData(
-                trackHeight: 8,
-                thumbColor: Colors.black,
-                overlayColor: Colors.black.withOpacity(0.12),
-                trackShape: _HueTrackShape(),
-              ),
-              child: Slider(
-                value: _value,
-                min: 0,
-                max: 360,
-                onChanged: (double newValue) {
-                  setState(() {
-                    _value = newValue;
-                  });
-                },
-              ),
-            ),
-            TextField(
-              maxLines: 2,
-              minLines: 1,
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-                focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-              ),
-              cursorColor: HSLColor.fromAHSL(1, _value, 1, 0.5).toColor(),
-              cursorWidth: 3,
-              textInputAction: TextInputAction.done,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _HueTrackShape extends RectangularSliderTrackShape {
-  static const _hueColors = [
-    Color(0xFFFF0000),
-    Color(0xFFFFFF00),
-    Color(0xFF00FF00),
-    Color(0xFF00FFFF),
-    Color(0xFF0000FF),
-    Color(0xFFFF00FF),
-    Color(0xFFFF0000),
-  ];
-
-  @override
-  void paint(PaintingContext context, Offset offset,
-      {RenderBox parentBox,
-        SliderThemeData sliderTheme,
-        Animation<double> enableAnimation,
-        Offset thumbCenter,
-        bool isEnabled = false,
-        bool isDiscrete = false,
-        TextDirection textDirection}) {
-
-    final Rect trackRect = getPreferredRect(
-      parentBox: parentBox,
-      offset: offset,
-      sliderTheme: sliderTheme,
-    );
-    LinearGradient leftRainbowGradient = LinearGradient(colors: _hueColors);
-    Paint paint = Paint()..shader = leftRainbowGradient.createShader(trackRect);
-    context.canvas.drawRect(trackRect, paint);
-  }
-}
+const _hueColors = [
+  Color(0xFFFF0000),
+  Color(0xFFFFFF00),
+  Color(0xFF00FF00),
+  Color(0xFF00FFFF),
+  Color(0xFF0000FF),
+  Color(0xFFFF00FF),
+  Color(0xFFFF0000),
+];
 
 Path _triangle(double size, Offset thumbCenter, {bool invert = false}) {
   final Path thumbPath = Path();

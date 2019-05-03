@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class FortnightlyHubFar extends StatelessWidget {
+class FortnightlyCounterFar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: buildTheme(context),
-      home: FortnightlyHubFarHome(),
+      home: FortnightlyCounterFarHome(),
     );
   }
 }
 
-class FortnightlyHubFarHome extends StatelessWidget {
+class FortnightlyCounterFarHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
