@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:math' as math;
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/foundation.dart';
@@ -43,9 +44,7 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
     setState(() {
       _camera = CameraController(
         description,
-        defaultTargetPlatform == TargetPlatform.iOS
-            ? ResolutionPreset.low
-            : ResolutionPreset.medium,
+        ResolutionPreset.low,
       );
     });
 
@@ -113,20 +112,38 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
   @override
   Widget build(BuildContext context) {
     // TODO: Add a fade between the 2 demos if possible.
-
+    Widget fortnightly;
     if (_isCloseExperience()) {
       if (!_isDisplayingClose) {
         _lockUpdates();
       }
       _isDisplayingClose = true;
-      return FortnightlyHubClose();
+      fortnightly = FortnightlyHubClose();
     } else {
       // Prevent screen from flickering between states.
       if (_isDisplayingClose) {
         _lockUpdates();
       }
       _isDisplayingClose = false;
-      return FortnightlyHubFar();
+      fortnightly = FortnightlyHubFar();
     }
+
+    return Stack(
+      textDirection: TextDirection.ltr,
+      children: <Widget>[
+        fortnightly,
+        if (_camera != null)
+          Positioned(
+            right: 12,
+            width: 100,
+            bottom: 12,
+            height: 100,
+            child: Transform.rotate(
+              angle: -math.pi / 2,
+              child: CameraPreview(_camera),
+            ),
+          ),
+      ],
+    );
   }
 }
