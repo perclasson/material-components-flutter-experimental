@@ -12,6 +12,13 @@ import 'utils.dart';
 import '../hub_close/hub_close.dart';
 import '../hub_far/hub_far.dart';
 
+// Adjust this number to work for the demo.
+const double _proximityThreshold = 0.1;
+
+// Set this to true to ignore any face size math and simply use the presence
+// of a face as the deciding factor.
+const bool _forceForAnySizeFace = false;
+
 class FortnightlyProximity extends StatefulWidget {
   @override
   _FortnightlyProximityState createState() => _FortnightlyProximityState();
@@ -72,34 +79,54 @@ class _FortnightlyProximityState extends State<FortnightlyProximity> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: Add a fade between the 2 demos if possible.
-    // TODO: Add a check for a face size if possible using the boundingBox.
-
+  bool _isCloseExperience() {
     if (_scanResults == null ||
         _camera == null ||
         !_camera.value.isInitialized) {
-      return FortnightlyHubFar();
+      return false;
     }
 
     if (_scanResults is List<Face>) {
       List<Face> faces = _scanResults;
-      if (faces.isNotEmpty) {
-        // Prevent screen from flickering between states.
-        if (!_isDisplayingClose) {
-          _lockUpdates();
+      if (faces.isNotEmpty && _forceForAnySizeFace) {
+        return true;
+      }
+
+      final Size imageSize = Size(
+        _camera.value.previewSize.height,
+        _camera.value.previewSize.width,
+      );
+      final double imageArea = imageSize.width * imageSize.height;
+
+      for (Face face in faces) {
+        final double faceArea = face.boundingBox.width * face.boundingBox.height;
+        // Only display the close experience when the face is at least `_proximityThreshold` of the visible space.
+        if (faceArea >= imageArea * _proximityThreshold) {
+          return true;
         }
-        _isDisplayingClose = true;
-        return FortnightlyHubClose();
       }
     }
 
-    // Prevent screen from flickering between states.
-    if (_isDisplayingClose) {
-      _lockUpdates();
+    return false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Add a fade between the 2 demos if possible.
+
+    if (_isCloseExperience()) {
+      if (!_isDisplayingClose) {
+        _lockUpdates();
+      }
+      _isDisplayingClose = true;
+      return FortnightlyHubClose();
+    } else {
+      // Prevent screen from flickering between states.
+      if (_isDisplayingClose) {
+        _lockUpdates();
+      }
+      _isDisplayingClose = false;
+      return FortnightlyHubFar();
     }
-    _isDisplayingClose = false;
-    return FortnightlyHubFar();
   }
 }
