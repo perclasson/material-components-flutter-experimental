@@ -10,7 +10,7 @@ import 'package:material_flutter_io19/fortnightly/wearable/wearable.dart';
 enum DeviceType { countertop, foldable, tv, wristwatch }
 
 class FortnightlyAdaptive extends StatelessWidget {
-  DeviceType deviceType = DeviceType.countertop;
+  final DeviceType deviceType = DeviceType.tv;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +30,7 @@ class FortnightlyAdaptive extends StatelessWidget {
         break;
       case DeviceType.countertop:
         SystemChrome.setEnabledSystemUIOverlays([]);
+//        return FortnightlyCountertop();
         return FortnightlyCounterClose();
         break;
       case DeviceType.tv:

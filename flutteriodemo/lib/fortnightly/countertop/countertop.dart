@@ -20,12 +20,12 @@ const double _proximityThreshold = 0.1;
 // of a face as the deciding factor.
 const bool _forceForAnySizeFace = false;
 
-class FortnightlyProximity extends StatefulWidget {
+class FortnightlyCountertop extends StatefulWidget {
   @override
-  _FortnightlyProximityState createState() => _FortnightlyProximityState();
+  _FortnightlyCountertopState createState() => _FortnightlyCountertopState();
 }
 
-class _FortnightlyProximityState extends State<FortnightlyProximity> {
+class _FortnightlyCountertopState extends State<FortnightlyCountertop> {
   dynamic _scanResults;
   CameraController _camera;
   bool _isDetecting = false;

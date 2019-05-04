@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:material_flutter_io19/fortnightly/adaptive/shared.dart';
 
 class FortnightlyTv extends StatelessWidget {
   @override
@@ -40,89 +41,7 @@ class FortnightlyTvHome extends StatelessWidget {
                       ),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
-                        child: Row(
-//                    scrollDirection: Axis.horizontal,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            ArticlePreview(
-                              imageUrl: 'assets/fortnightly_dining.png',
-                              category: 'POLITICS',
-                              title: 'Modern Dining Rituals For Singles',
-                              snippet:
-                                  'From the chef\'s table to restaurants for singles, modern cusine gets creative',
-                            ),
-                            SizedBox(width: 20),
-                            ArticlePreview(
-                              imageUrl: 'assets/fortnightly_poverty.png',
-                              category: 'US',
-                              title: 'Poverty To Empowerment In Chicago',
-                              snippet:
-                                  'How one woman is transforming the lives of underprivileged children',
-                            ),
-                            SizedBox(width: 20),
-                            ArticlePreview(
-                              imageUrl: 'assets/fortnightly_veterans.png',
-                              category: 'POLITICS',
-                              title: 'A Fight For Aging Veterans',
-                              snippet:
-                                  'For those nearing retirement, benefits are not always guaranteed',
-                            ),
-                            SizedBox(width: 20),
-                            Container(
-                              width: 130,
-                              child: Column(
-                                children: <Widget>[
-                                  Image.asset(
-                                      'assets/fortnightly_chart_tv.png'),
-                                  StockItem(
-                                    ticker: 'DIJA',
-                                    price: '7,031.21',
-                                    percent: -0.48,
-                                  ),
-                                  StockItem(
-                                    ticker: 'SP',
-                                    price: '1,967.84',
-                                    percent: 0.00,
-                                  ),
-                                  StockItem(
-                                    ticker: 'Nasdaq',
-                                    price: '6,211.46',
-                                    percent: 0.52,
-                                  ),
-                                  StockItem(
-                                    ticker: 'Nikkei',
-                                    price: '5,891',
-                                    percent: 1.16,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: 20),
-                            ArticlePreview(
-                              imageUrl: 'assets/fortnightly_dining.png',
-                              category: 'POLITICS',
-                              title: 'Modern Dining Rituals For Singles',
-                              snippet:
-                                  'From the chef\'s table to restaurants for singles, modern cusine gets creative',
-                            ),
-                            SizedBox(width: 20),
-                            ArticlePreview(
-                              imageUrl: 'assets/fortnightly_poverty.png',
-                              category: 'US',
-                              title: 'Poverty To Empowerment In Chicago',
-                              snippet:
-                                  'How one woman is transforming the lives of underprivileged children',
-                            ),
-                            SizedBox(width: 20),
-                            ArticlePreview(
-                              imageUrl: 'assets/fortnightly_veterans.png',
-                              category: 'POLITICS',
-                              title: 'A Fight For Aging Veterans',
-                              snippet:
-                                  'For those nearing retirement, benefits are not always guaranteed',
-                            ),
-                          ],
-                        ),
+                        child: TvRow(),
                       ),
                       SizedBox(height: 20),
                       Container(
@@ -134,89 +53,7 @@ class FortnightlyTvHome extends StatelessWidget {
                         opacity: 0.70,
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
-                          child: Row(
-//                    scrollDirection: Axis.horizontal,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              ArticlePreview(
-                                imageUrl: 'assets/fortnightly_dining.png',
-                                category: 'POLITICS',
-                                title: 'Modern Dining Rituals For Singles',
-                                snippet:
-                                    'From the chef\'s table to restaurants for singles, modern cusine gets creative',
-                              ),
-                              SizedBox(width: 20),
-                              ArticlePreview(
-                                imageUrl: 'assets/fortnightly_poverty.png',
-                                category: 'US',
-                                title: 'Poverty To Empowerment In Chicago',
-                                snippet:
-                                    'How one woman is transforming the lives of underprivileged children',
-                              ),
-                              SizedBox(width: 20),
-                              ArticlePreview(
-                                imageUrl: 'assets/fortnightly_veterans.png',
-                                category: 'POLITICS',
-                                title: 'A Fight For Aging Veterans',
-                                snippet:
-                                    'For those nearing retirement, benefits are not always guaranteed',
-                              ),
-                              SizedBox(width: 20),
-                              Container(
-                                width: 132,
-                                child: Column(
-                                  children: <Widget>[
-                                    Image.asset(
-                                        'assets/fortnightly_chart_tv.png'),
-                                    StockItem(
-                                      ticker: 'DIJA',
-                                      price: '7,031.21',
-                                      percent: -0.48,
-                                    ),
-                                    StockItem(
-                                      ticker: 'SP',
-                                      price: '1,967.84',
-                                      percent: 0.00,
-                                    ),
-                                    StockItem(
-                                      ticker: 'Nasdaq',
-                                      price: '6,211.46',
-                                      percent: 0.52,
-                                    ),
-                                    StockItem(
-                                      ticker: 'Nikkei',
-                                      price: '5,891',
-                                      percent: 1.16,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(width: 20),
-                              ArticlePreview(
-                                imageUrl: 'assets/fortnightly_dining.png',
-                                category: 'POLITICS',
-                                title: 'Modern Dining Rituals For Singles',
-                                snippet:
-                                    'From the chef\'s table to restaurants for singles, modern cusine gets creative',
-                              ),
-                              SizedBox(width: 20),
-                              ArticlePreview(
-                                imageUrl: 'assets/fortnightly_poverty.png',
-                                category: 'US',
-                                title: 'Poverty To Empowerment In Chicago',
-                                snippet:
-                                    'How one woman is transforming the lives of underprivileged children',
-                              ),
-                              SizedBox(width: 20),
-                              ArticlePreview(
-                                imageUrl: 'assets/fortnightly_veterans.png',
-                                category: 'POLITICS',
-                                title: 'A Fight For Aging Veterans',
-                                snippet:
-                                    'For those nearing retirement, benefits are not always guaranteed',
-                              ),
-                            ],
-                          ),
+                          child: TvRow(),
                         ),
                       )
                     ],
@@ -231,151 +68,142 @@ class FortnightlyTvHome extends StatelessWidget {
   }
 }
 
-class ArticlePreview extends StatelessWidget {
-  ArticlePreview(
-      {this.imageUrl,
-      this.category,
-      this.title,
-      this.snippet,
-      this.lead = false});
-
-  final String imageUrl;
-  final String category;
-  final String title;
-  final String snippet;
-  final bool lead;
-
+class TvRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    return Container(
-      width: 132,
-      alignment: Alignment.topCenter,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            child: Image.asset(
-              imageUrl,
-              fit: BoxFit.fitWidth,
-            ),
+    final double articleWidth = 132;
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        VerticalArticlePreview(
+          width: articleWidth,
+          data: ArticleData(
+            imageUrl: 'assets/fortnightly_dining.png',
+            category: 'POLITICS',
+            title: 'Modern Dining Rituals For Singles',
+            snippet:
+            'From the chef\'s table to restaurants for singles, modern cusine gets creative',
           ),
-          SizedBox(height: 12),
-          Text(
-            this.category,
-            style: textTheme.subhead,
+        ),
+        SizedBox(width: 20),
+        VerticalArticlePreview(
+          width: articleWidth,
+          data: ArticleData(
+            imageUrl: 'assets/fortnightly_poverty.png',
+            category: 'US',
+            title: 'Poverty To Empowerment In Chicago',
+            snippet:
+            'How one woman is transforming the lives of underprivileged children',
           ),
-          SizedBox(height: 12),
-          Text(
-            this.title,
-            style: textTheme.headline,
+        ),
+        SizedBox(width: 20),
+        VerticalArticlePreview(
+          width: articleWidth,
+          data: ArticleData(
+            imageUrl: 'assets/fortnightly_veterans.png',
+            category: 'POLITICS',
+            title: 'A Fight For Aging Veterans',
+            snippet:
+            'For those nearing retirement, benefits are not always guaranteed',
           ),
-          SizedBox(height: 4),
-          Text(
-            this.snippet,
-            style: textTheme.body1,
+        ),
+        SizedBox(width: 20),
+        SizedBox(
+          width: 130,
+          child: Column(
+            children: buildStockItems(context, isTv: true)
+                .sublist(0, 9),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class StockItem extends StatelessWidget {
-  StockItem({this.ticker, this.price, this.percent});
-
-  final String ticker;
-  final String price;
-  final double percent;
-
-  @override
-  Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-
-    return Padding(
-      padding: const EdgeInsets.only(top: 16, bottom: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(ticker, style: textTheme.caption),
-          SizedBox(height: 2),
-          Row(
-            children: <Widget>[
-              Text(price,
-                  style: textTheme.caption
-                      .copyWith(color: Colors.white.withOpacity(0.75))),
-              Spacer(),
-              Text(
-                percent > 0 ? '+' : '-',
-                style: textTheme.caption.copyWith(
-                  fontSize: 12,
-                  color: percent > 0 ? Color(0xff20CF63) : Color(0xff661FFF),
-                ),
-              ),
-              SizedBox(width: 4),
-              Text(
-                percent.abs().toStringAsFixed(2) + '%',
-                style: textTheme.caption.copyWith(
-                  fontSize: 10,
-                  color: Colors.white.withOpacity(0.75),
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
+        ),
+        SizedBox(width: 20),
+        VerticalArticlePreview(
+          width: articleWidth,
+          data: ArticleData(
+            imageUrl: 'assets/fortnightly_dining.png',
+            category: 'POLITICS',
+            title: 'Modern Dining Rituals For Singles',
+            snippet:
+            'From the chef\'s table to restaurants for singles, modern cusine gets creative',
+          ),
+        ),
+        SizedBox(width: 20),
+        VerticalArticlePreview(
+          width: articleWidth,
+          data: ArticleData(
+            imageUrl: 'assets/fortnightly_poverty.png',
+            category: 'US',
+            title: 'Poverty To Empowerment In Chicago',
+            snippet:
+            'How one woman is transforming the lives of underprivileged children',
+          ),
+        ),
+        SizedBox(width: 20),
+        VerticalArticlePreview(
+          width: articleWidth,
+          data: ArticleData(
+            imageUrl: 'assets/fortnightly_veterans.png',
+            category: 'POLITICS',
+            title: 'A Fight For Aging Veterans',
+            snippet:
+            'For those nearing retirement, benefits are not always guaranteed',
+          ),
+        ),
+      ],
     );
   }
 }
 
 ThemeData buildTheme(BuildContext context) {
-  TextTheme textTheme = Theme
-    .of(context)
-    .textTheme;
+  TextTheme textTheme = Theme.of(context).textTheme;
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
-    appBarTheme: AppBarTheme(
-      color: Colors.white,
-      elevation: 0,
-      iconTheme: IconTheme.of(context).copyWith(color: Colors.black),
-    ),
-    textTheme: textTheme.copyWith(
-      // preview headlines
-      headline: textTheme.headline.copyWith(
-        fontFamily: 'Libre Franklin',
-        fontWeight: FontWeight.w500,
+      scaffoldBackgroundColor: Colors.white,
+      appBarTheme: AppBarTheme(
         color: Colors.white,
-        fontSize: 16,
+        elevation: 0,
+        iconTheme: IconTheme.of(context).copyWith(color: Colors.black),
       ),
-      // preview snippet
-      body1: textTheme.body1.copyWith(
-        fontFamily: 'Merriweather',
-        fontWeight: FontWeight.w300,
-        color: Colors.white.withOpacity(0.76),
-        fontSize: 12,
-      ),
-      // caption 2, category subtitle
-      subhead: textTheme.subhead.copyWith(
-        fontFamily: 'Libre Franklin',
-        fontWeight: FontWeight.w700,
-        fontSize: 12,
-        color: Colors.white.withOpacity(0.50),
-      ),
-      // stock ticker
-      caption: textTheme.caption.copyWith(
-        fontFamily: 'Libre Franklin',
-        fontWeight: FontWeight.w700,
-        fontSize: 12,
-        color: Colors.white,
-      ),
-      // Top Highlights, Last Updated...
-      title: textTheme.title.copyWith(
-        fontFamily: 'Merriweather',
-        fontWeight: FontWeight.w700,
-        fontStyle: FontStyle.italic,
-        fontSize: 14,
-        color: Colors.white,
-      ),
-    ));
+      textTheme: textTheme.copyWith(
+        // preview headlines
+        headline: textTheme.headline.copyWith(
+          fontFamily: 'Libre Franklin',
+          fontWeight: FontWeight.w500,
+          color: Colors.white,
+          fontSize: 16,
+        ),
+        // preview snippet
+        body1: textTheme.body1.copyWith(
+          fontFamily: 'Merriweather',
+          fontWeight: FontWeight.w300,
+          color: Colors.white.withOpacity(0.76),
+          fontSize: 12,
+        ),
+        // caption 2, category subtitle
+        subhead: textTheme.subhead.copyWith(
+          fontFamily: 'Libre Franklin',
+          fontWeight: FontWeight.w700,
+          fontSize: 12,
+          color: Colors.white.withOpacity(0.50),
+        ),
+        subtitle: textTheme.caption.copyWith(
+          fontFamily: 'Libre Franklin',
+          fontWeight: FontWeight.w700,
+          fontSize: 12,
+          color: Colors.white,
+        ),
+        // stock ticker
+        caption: textTheme.caption.copyWith(
+          fontFamily: 'Libre Franklin',
+          fontWeight: FontWeight.w700,
+          fontSize: 12,
+          color: Colors.white,
+        ),
+        // Top Highlights, Last Updated...
+        title: textTheme.title.copyWith(
+          fontFamily: 'Merriweather',
+          fontWeight: FontWeight.w700,
+          fontStyle: FontStyle.italic,
+          fontSize: 14,
+          color: Colors.white,
+        ),
+      ));
 }

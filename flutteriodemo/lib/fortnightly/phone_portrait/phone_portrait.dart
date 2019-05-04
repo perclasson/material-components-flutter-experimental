@@ -32,7 +32,10 @@ class FortnightlyPhonePortraitHome extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           HashtagBar(),
-          ...buildArticlePreviewItems(context),
+          ...buildArticlePreviewItems(context).map((w) => Padding(
+        padding: EdgeInsets.only(left: 16, right: 16),
+      child: w,
+    )),
         ],
       ),
     );
@@ -49,25 +52,21 @@ ThemeData buildTheme(BuildContext context) {
         iconTheme: IconTheme.of(context).copyWith(color: Colors.black),
       ),
       textTheme: textTheme.copyWith(
-          // Section header
           title: textTheme.title.copyWith(
             fontFamily: 'Merriweather',
             fontWeight: FontWeight.w700,
             fontStyle: FontStyle.italic,
           ),
-          // (title 2), hashtags
           subtitle: textTheme.subtitle.copyWith(
             fontFamily: 'Libre Franklin',
             fontWeight: FontWeight.w400,
             fontSize: 14,
           ),
-          // (headline 3) preview headlines
           headline: textTheme.headline.copyWith(
             fontFamily: 'Libre Franklin',
             fontWeight: FontWeight.w500,
             fontSize: 16,
           ),
-          // (caption 2), category, stock ticker
           subhead: textTheme.subhead.copyWith(
             fontFamily: 'Roboto Condensed',
             fontWeight: FontWeight.w700,

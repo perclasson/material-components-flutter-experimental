@@ -5,9 +5,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'proximity.dart';
+import 'countertop.dart';
 
 void main() {
   SystemChrome.setEnabledSystemUIOverlays([]);
-  return runApp(FortnightlyProximity());
+  return runApp(FortnightlyCountertop());
 }
