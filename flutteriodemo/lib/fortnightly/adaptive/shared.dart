@@ -276,14 +276,15 @@ class MenuItem extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          SizedBox(
-            width: 64,
+          Container(
+            width: 32,
+            alignment: Alignment.centerLeft,
             child: header ? null : Icon(Icons.arrow_drop_down),
           ),
           Text(title,
               style: Theme.of(context).textTheme.subhead.copyWith(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
+                    fontWeight: header ? FontWeight.w700 : FontWeight.w600,
+                    fontSize: 16,
                   )),
         ],
       ),

@@ -22,7 +22,7 @@ class FortnightlyCounterCloseHome extends StatelessWidget {
       width: 1,
       height: 480,
     );
-    final double articleWidth = 224;
+    final double articleWidth = 260;
 
     return SafeArea(
       child: Scaffold(
@@ -108,16 +108,16 @@ ThemeData buildTheme(BuildContext context) {
           headline: textTheme.headline.copyWith(
             fontFamily: 'Libre Franklin',
             fontWeight: FontWeight.w500,
-            fontSize: 24,
+            fontSize: 28,
           ),
           body1: textTheme.body1.copyWith(
             fontFamily: 'Merriweather',
             fontWeight: FontWeight.w300,
-            fontSize: 14,
+            fontSize: 18,
           ),
           subhead: textTheme.subhead.copyWith(
             fontFamily: 'Roboto Condensed',
             fontWeight: FontWeight.w700,
-            fontSize: 16,
+            fontSize: 18,
           )));
 }

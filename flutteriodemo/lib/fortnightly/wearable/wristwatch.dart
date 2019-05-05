@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class FortnightlyWearable extends StatelessWidget {
+class FortnightlyWristwatch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

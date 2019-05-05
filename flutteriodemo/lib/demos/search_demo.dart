@@ -147,7 +147,7 @@ class _SearchDemoSearchDelegate extends SearchDelegate<String> {
         ? _history
         : _data.where((String s) => s.startsWith(query));
 
-    return new _SuggestionList(
+    return _SuggestionList(
       query: query,
       suggestions: suggestions.toList(),
       onSelected: (String suggestion) {
@@ -161,7 +161,10 @@ class _SearchDemoSearchDelegate extends SearchDelegate<String> {
   Widget buildResults(BuildContext context) {
     List<Image> images = imageNames
         .where((String imageName) => imageName.startsWith(query))
-        .map((String imageName) => Image.asset('assets/$imageName.jpg', fit: BoxFit.cover,))
+        .map((String imageName) => Image.asset(
+              'assets/$imageName.jpg',
+              fit: BoxFit.cover,
+            ))
         .toList();
 
     return GridView.count(

@@ -12,23 +12,24 @@ class ComponentsDemo extends StatefulWidget {
 }
 
 class _ComponentsDemoState extends State<ComponentsDemo> {
-  double _value = 0.5;
+  double _value = 180;
 
   @override
   Widget build(BuildContext context) {
+    final Color hueColor = HSLColor.fromAHSL(1, _value, 1, 0.5).toColor();
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.black,
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             SliderTheme(
               data: SliderThemeData(
-                trackHeight: 8,
-                thumbColor: Colors.black,
-                overlayColor: Colors.black.withOpacity(0.12),
+                trackHeight: 6,
                 trackShape: _HueTrackShape(),
+                thumbColor: Colors.grey,
+                overlayColor: Colors.black.withOpacity(0.12),
               ),
               child: Slider(
                 value: _value,
@@ -42,19 +43,15 @@ class _ComponentsDemoState extends State<ComponentsDemo> {
               ),
             ),
             TextField(
-              maxLines: 2,
-              minLines: 1,
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
+                decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: hueColor)),
+                    border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black))
                 ),
-                focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-              ),
-              cursorColor: HSLColor.fromAHSL(1, _value, 1, 0.5).toColor(),
-              cursorWidth: 3,
-              textInputAction: TextInputAction.previous,
+                cursorColor: hueColor,
+                style: TextStyle(color: hueColor),
+                maxLines: 4,
+                minLines: 2,
+                textInputAction: TextInputAction.newline
             ),
           ],
         ),
@@ -64,36 +61,35 @@ class _ComponentsDemoState extends State<ComponentsDemo> {
 }
 
 class _HueTrackShape extends RectangularSliderTrackShape {
-  static const _hueColors = [
-    Color(0xFFFF0000),
-    Color(0xFFFFFF00),
-    Color(0xFF00FF00),
-    Color(0xFF00FFFF),
-    Color(0xFF0000FF),
-    Color(0xFFFF00FF),
-    Color(0xFFFF0000),
-  ];
-
   @override
   void paint(PaintingContext context, Offset offset,
-      {RenderBox parentBox,
-        SliderThemeData sliderTheme,
-        Animation<double> enableAnimation,
-        Offset thumbCenter,
-        bool isEnabled = false,
+      {@required RenderBox parentBox,
+        @required SliderThemeData sliderTheme,
+        @required Animation<double> enableAnimation,
+        @required TextDirection textDirection,
+        @required Offset thumbCenter,
         bool isDiscrete = false,
-        TextDirection textDirection}) {
-
-    final Rect trackRect = getPreferredRect(
+        bool isEnabled = false}) {
+    Rect trackRect = getPreferredRect(
       parentBox: parentBox,
       offset: offset,
       sliderTheme: sliderTheme,
     );
-    LinearGradient leftRainbowGradient = LinearGradient(colors: _hueColors);
-    Paint paint = Paint()..shader = leftRainbowGradient.createShader(trackRect);
+    LinearGradient gradient = LinearGradient(colors: _hueColors);
+    Paint paint = Paint()..shader = gradient.createShader(trackRect);
     context.canvas.drawRect(trackRect, paint);
   }
 }
+
+const _hueColors = [
+  Color(0xFFFF0000),
+  Color(0xFFFFFF00),
+  Color(0xFF00FF00),
+  Color(0xFF00FFFF),
+  Color(0xFF0000FF),
+  Color(0xFFFF00FF),
+  Color(0xFFFF0000),
+];
 
 Path _triangle(double size, Offset thumbCenter, {bool invert = false}) {
   final Path thumbPath = Path();
@@ -128,7 +124,7 @@ Path _rightArrowTriangle(Rect rect) {
   return path;
 }
 
-class _CustomRainbowTriangularTrackShape extends RectangularSliderTrackShape {
+class _RainbowTriangularTrackShape extends RectangularSliderTrackShape {
   @override
   void paint(PaintingContext context, Offset offset,
       {RenderBox parentBox,
@@ -172,7 +168,7 @@ class _CustomRainbowTriangularTrackShape extends RectangularSliderTrackShape {
   }
 }
 
-class _CustomTriangularThumbShape extends SliderComponentShape {
+class _TriangularThumbShape extends SliderComponentShape {
   static const double _thumbSize = 4.0;
   static const double _disabledThumbSize = 3.0;
 
@@ -213,7 +209,7 @@ class _CustomTriangularThumbShape extends SliderComponentShape {
   }
 }
 
-class _CustomTriangularValueIndicatorShape extends SliderComponentShape {
+class _TriangularValueIndicatorShape extends SliderComponentShape {
   static const double _indicatorSize = 4.0;
   static const double _disabledIndicatorSize = 3.0;
   static const double _slideUpHeight = 40.0;

@@ -31,31 +31,34 @@ class FortnightlyCounterFarHome extends StatelessWidget {
                   child: Image.asset('assets/fortnightly_title_white.png'),
                 ),
               ),
-              SizedBox(height: 100),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          'WORLD',
-                          style: textTheme.subhead,
-                        ),
-                        SizedBox(height: 32),
-                        Text(
-                          'The Quiet, Yet Powerful Healthcare Revolution',
-                          style: textTheme.headline,
-                        ),
-                      ],
+              Spacer(),
+              Flexible(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'WORLD',
+                            style: textTheme.subhead,
+                          ),
+                          SizedBox(height: 32),
+                          Text(
+                            'The Quiet, Yet Powerful Healthcare Revolution',
+                            style: textTheme.headline,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Flexible(
-                      child: Image.asset('assets/fortnightly_healthcare.png')),
-                ],
-              )
+                    Flexible(
+                        child: Image.asset('assets/fortnightly_healthcare.png')),
+                  ],
+                ),
+              ),
+              Spacer(),
             ],
           ),
         ),

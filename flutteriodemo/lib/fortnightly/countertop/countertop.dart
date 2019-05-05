@@ -14,7 +14,7 @@ import '../counter_close/counter_close.dart';
 import '../counter_far/counter_far.dart';
 
 // Adjust this number to work for the demo.
-const double _proximityThreshold = 0.1;
+const double _proximityThreshold = 0.08;
 
 // Set this to true to ignore any face size math and simply use the presence
 // of a face as the deciding factor.

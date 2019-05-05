@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'wearable.dart';
+import 'wristwatch.dart';
 
 void main() async {
-  return runApp(FortnightlyWearable());
+  return runApp(FortnightlyWristwatch());
 }
