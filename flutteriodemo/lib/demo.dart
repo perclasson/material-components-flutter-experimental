@@ -13,7 +13,6 @@ import 'demos/anypixel_fortnightly_demo.dart';
 import 'demos/anypixel_height_demo.dart';
 import 'demos/anypixel_life_demo.dart';
 import 'demos/search_demo.dart';
-import 'fortnightly.dart';
 
 class IoDemo {
   const IoDemo({

@@ -52,11 +52,12 @@ class HorizontalArticlePreview extends StatelessWidget {
 }
 
 class VerticalArticlePreview extends StatelessWidget {
-  VerticalArticlePreview({this.data, this.width, this.headlineTextStyle});
+  VerticalArticlePreview({this.data, this.width, this.headlineTextStyle, this.showSnippet = false});
 
   final ArticleData data;
   final double width;
   final TextStyle headlineTextStyle;
+  final bool showSnippet;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +85,7 @@ class VerticalArticlePreview extends StatelessWidget {
             data.title,
             style: headlineTextStyle ?? textTheme.headline,
           ),
-          if (data.snippet != null) ...[
+          if (showSnippet) ...[
             SizedBox(height: 4),
             Text(
               data.snippet,
@@ -252,7 +253,7 @@ class NavigationMenu extends StatelessWidget {
         MenuItem('Politics'),
         MenuItem('Business'),
         MenuItem('Tech'),
-        MenuItem('Sciene'),
+        MenuItem('Science'),
         MenuItem('Sports'),
         MenuItem('Travel'),
         MenuItem('Culture'),
@@ -281,11 +282,13 @@ class MenuItem extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: header ? null : Icon(Icons.arrow_drop_down),
           ),
-          Text(title,
-              style: Theme.of(context).textTheme.subhead.copyWith(
-                    fontWeight: header ? FontWeight.w700 : FontWeight.w600,
-                    fontSize: 16,
-                  )),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.subhead.copyWith(
+                  fontWeight: header ? FontWeight.w700 : FontWeight.w600,
+                  fontSize: 16,
+                ),
+          ),
         ],
       ),
     );

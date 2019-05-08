@@ -44,18 +44,18 @@ class FortnightlyTvHome extends StatelessWidget {
                         child: TvRow(),
                       ),
                       SizedBox(height: 20),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        padding: EdgeInsets.only(top: 20, bottom: 20),
-                        child: Text('Last Updated', style: textTheme.title),
-                      ),
-                      Opacity(
-                        opacity: 0.70,
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: TvRow(),
-                        ),
-                      )
+//                      Container(
+//                        alignment: Alignment.centerLeft,
+//                        padding: EdgeInsets.only(top: 20, bottom: 20),
+//                        child: Text('Last Updated', style: textTheme.title),
+//                      ),
+//                      Opacity(
+//                        opacity: 0.70,
+//                        child: SingleChildScrollView(
+//                          scrollDirection: Axis.horizontal,
+//                          child: TvRow(),
+//                        ),
+//                      )
                     ],
                   ),
                 )
@@ -77,6 +77,7 @@ class TvRow extends StatelessWidget {
       children: <Widget>[
         VerticalArticlePreview(
           width: articleWidth,
+          showSnippet: true,
           data: ArticleData(
             imageUrl: 'assets/fortnightly_dining.png',
             category: 'POLITICS',
@@ -88,6 +89,7 @@ class TvRow extends StatelessWidget {
         SizedBox(width: 20),
         VerticalArticlePreview(
           width: articleWidth,
+          showSnippet: true,
           data: ArticleData(
             imageUrl: 'assets/fortnightly_poverty.png',
             category: 'US',
@@ -99,6 +101,7 @@ class TvRow extends StatelessWidget {
         SizedBox(width: 20),
         VerticalArticlePreview(
           width: articleWidth,
+          showSnippet: true,
           data: ArticleData(
             imageUrl: 'assets/fortnightly_veterans.png',
             category: 'POLITICS',
@@ -118,6 +121,7 @@ class TvRow extends StatelessWidget {
         SizedBox(width: 20),
         VerticalArticlePreview(
           width: articleWidth,
+          showSnippet: true,
           data: ArticleData(
             imageUrl: 'assets/fortnightly_dining.png',
             category: 'POLITICS',
@@ -129,6 +133,7 @@ class TvRow extends StatelessWidget {
         SizedBox(width: 20),
         VerticalArticlePreview(
           width: articleWidth,
+          showSnippet: true,
           data: ArticleData(
             imageUrl: 'assets/fortnightly_poverty.png',
             category: 'US',
@@ -140,6 +145,7 @@ class TvRow extends StatelessWidget {
         SizedBox(width: 20),
         VerticalArticlePreview(
           width: articleWidth,
+          showSnippet: true,
           data: ArticleData(
             imageUrl: 'assets/fortnightly_veterans.png',
             category: 'POLITICS',

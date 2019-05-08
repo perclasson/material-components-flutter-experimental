@@ -29,15 +29,7 @@ class FortnightlyAdaptive extends StatelessWidget {
         return FortnightlyCountertop();
         break;
       case DeviceType.foldable:
-        return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-          final Size size = constraints.biggest;
-          final double aspectRatio = size.width / size.height;
-          if (aspectRatio < 0.7) {
-            return FortnightlyPhonePortrait();
-          } else {
-            return FortnightlyFoldableOpen();
-          }
-        })
+        // TODO: implement foldable with LayoutBuilder
         break;
       case DeviceType.tv:
         SystemChrome.setEnabledSystemUIOverlays([]);
