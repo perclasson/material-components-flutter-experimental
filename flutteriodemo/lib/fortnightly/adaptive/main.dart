@@ -19,7 +19,7 @@ void main(List<String> args) async {
 enum DeviceType {countertop, foldable, tv, wristwatch}
 
 class FortnightlyAdaptive extends StatelessWidget {
-  final DeviceType deviceType = DeviceType.countertop;
+  final DeviceType deviceType = DeviceType.foldable;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class FortnightlyAdaptive extends StatelessWidget {
           } else {
             return FortnightlyFoldableOpen();
           }
-        })
+        });
         break;
       case DeviceType.tv:
         SystemChrome.setEnabledSystemUIOverlays([]);
@@ -48,5 +48,6 @@ class FortnightlyAdaptive extends StatelessWidget {
         return FortnightlyWristwatch();
         break;
     }
+    return FortnightlyPhonePortrait();
   }
 }

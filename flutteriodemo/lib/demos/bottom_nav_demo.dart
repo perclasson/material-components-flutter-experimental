@@ -13,7 +13,7 @@ class BottomNavDemoState extends State<BottomNavDemo> {
   final _widgetOptions = [
     Text('Pictures of Cats'),
     Text('Pictures of Dogs'),
-    Text('Pictures of Will + Anthony'),
+    Text('Pictures of People'),
   ];
 
   @override

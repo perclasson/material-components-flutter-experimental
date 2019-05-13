@@ -72,14 +72,12 @@ ThemeData buildTheme(BuildContext context) {
   return ThemeData(
     scaffoldBackgroundColor: Colors.black,
     textTheme: textTheme.copyWith(
-      // preview headlines
       headline: textTheme.headline.copyWith(
         fontFamily: 'Raleway',
         fontWeight: FontWeight.w500,
         fontSize: 48,
         color: Colors.white,
       ),
-      // (caption 2), preview category, stock ticker
       subhead: textTheme.subhead.copyWith(
         fontFamily: 'Libre Franklin',
         fontWeight: FontWeight.w700,

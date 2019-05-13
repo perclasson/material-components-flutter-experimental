@@ -450,26 +450,22 @@ ThemeData buildTheme(BuildContext context) {
       iconTheme: IconTheme.of(context).copyWith(color: Colors.black),
     ),
     textTheme: textTheme.copyWith(
-      // preview snippet
       body1: textTheme.body1.copyWith(
         fontFamily: 'Merriweather',
         fontWeight: FontWeight.w300,
         fontSize: 16,
       ),
-      // time in latest updates
       body2: textTheme.body2.copyWith(
         fontFamily: 'Libre Franklin',
         fontWeight: FontWeight.w500,
         fontSize: 11,
         color: Colors.black.withOpacity(0.5),
       ),
-      // preview headlines
       headline: textTheme.headline.copyWith(
         fontFamily: 'Libre Franklin',
         fontWeight: FontWeight.w500,
         fontSize: 16,
       ),
-      // (caption 2), preview category, stock ticker
       subhead: textTheme.subhead.copyWith(
         fontFamily: 'Roboto Condensed',
         fontWeight: FontWeight.w700,
@@ -480,7 +476,6 @@ ThemeData buildTheme(BuildContext context) {
         fontWeight: FontWeight.w400,
         fontSize: 14,
       ),
-      // section titles: Top Highlights, Last Updated...
       title: textTheme.title.copyWith(
         fontFamily: 'Merriweather',
         fontWeight: FontWeight.w700,
