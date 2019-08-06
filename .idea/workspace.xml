@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9af22f0f-4045-42e7-a30d-d666f681b0e3" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/flutteriodemo/lib/anypixel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutteriodemo/lib/anypixel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutteriodemo/lib/demo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutteriodemo/lib/demo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_height_demo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_height_demo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_life_demo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_life_demo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutteriodemo/lib/demos/extended_fab_demo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/flutteriodemo/lib/demos/extended_fab_demo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutteriodemo/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutteriodemo/pubspec.lock" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="anypixel_fortnightly_demo.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_fortnightly_demo.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="anypixel_height_demo.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_height_demo.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="606">
+              <caret line="62" column="24" lean-forward="true" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="anypixel_life_demo.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_life_demo.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="643">
+              <caret line="174" column="7" lean-forward="true" selection-start-line="174" selection-start-column="7" selection-end-line="174" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="anypixel_starter_demo.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_starter_demo.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bottom_nav_demo.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/bottom_nav_demo.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="extended_fab_demo.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/extended_fab_demo.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-66">
+              <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="radical_slider_demo.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/radical_slider_demo.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shape_theme_demo.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/shape_theme_demo.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_demo.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/search_demo.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="text_field_demo.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/text_field_demo.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>this.send</find>
+      <find>receiveMe</find>
+      <find>port</find>
+      <find>anypiz</find>
+      <find>anypix</find>
+      <find>.ready</find>
+      <find>timeout</find>
+      <find>startUDPReceiver</find>
+      <find>index</find>
+      <find>receiver</find>
+      <find>star</find>
+      <find>send</find>
+      <find>postM</find>
+      <find>console.l</find>
+      <find>flutter</find>
+      <find>console</find>
+      <find>inputStat</find>
+      <find>updateInputState</find>
+      <find>js</find>
+      <find>post</find>
+      <find>//</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/backend/emulator/manifest.json" />
+        <option value="$PROJECT_DIR$/backend/appserver/public/apps/static/index.js" />
+        <option value="$PROJECT_DIR$/backend/appserver/package.json" />
+        <option value="$PROJECT_DIR$/backend/chromebridge/src/view-controller.js" />
+        <option value="$PROJECT_DIR$/backend/chromebridge/src/app-controller.js" />
+        <option value="$PROJECT_DIR$/backend/chromebridge/src/display-unit.js" />
+        <option value="$PROJECT_DIR$/backend/appserver/appserver.js" />
+        <option value="$PROJECT_DIR$/flutteriodemo/lib/demo.dart" />
+        <option value="$PROJECT_DIR$/flutteriodemo/lib/anypixel.dart" />
+        <option value="$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_height_demo.dart" />
+        <option value="$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_life_demo.dart" />
+        <option value="$PROJECT_DIR$/flutteriodemo/lib/demos/extended_fab_demo.dart" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/backend/appserver/node_modules" />
+    <handled-path value="$PROJECT_DIR$/backend/appserver/public/apps/getting-started-rpi/node_modules" />
+    <handled-path value="$PROJECT_DIR$/backend/appserver/public/apps/reaction/node_modules" />
+    <handled-path value="$PROJECT_DIR$/backend/chromebridge/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/backend/appserver/package.json" />
+      <path value="$PROJECT_DIR$/backend/appserver/public/apps/getting-started-rpi/package.json" />
+      <path value="$PROJECT_DIR$/backend/appserver/public/apps/reaction/package.json" />
+      <path value="$PROJECT_DIR$/backend/appserver/public/apps/static/package.json" />
+      <path value="$PROJECT_DIR$/backend/chromebridge/package.json" />
+      <path value="$PROJECT_DIR$/backend/emulator/package.json" />
+      <path value="$PROJECT_DIR$/backend/udp-manager/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/automata/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/ballpit/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/blocksquish/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/bouncetype/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/getting-started-rpi/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/getting-started/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/heatmap/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/hyperspace/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/inconvergent/app/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/iridescent-life/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/reaction/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/rope/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/squishy/package.json" />
+      <path value="$PROJECT_DIR$/frontend/examples/subway/package.json" />
+      <path value="$PROJECT_DIR$/frontend/framework/package.json" />
+      <path value="$PROJECT_DIR$/frontend/previewer/package.json" />
+      <path value="$PROJECT_DIR$/rpi-example/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="1680" />
+    <option name="y" value="-1110" />
+    <option name="width" value="3008" />
+    <option name="height" value="1692" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <autoscrollFromSource AndroidView="true" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="material-flutter-io19" type="b2602c69:ProjectViewProjectNode" />
+              <item name="material-flutter-io19" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="material-flutter-io19" type="b2602c69:ProjectViewProjectNode" />
+              <item name="material-flutter-io19" type="462c0819:PsiDirectoryNode" />
+              <item name="flutteriodemo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="material-flutter-io19" type="b2602c69:ProjectViewProjectNode" />
+              <item name="material-flutter-io19" type="462c0819:PsiDirectoryNode" />
+              <item name="flutteriodemo" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="material-flutter-io19" type="b2602c69:ProjectViewProjectNode" />
+              <item name="material-flutter-io19" type="462c0819:PsiDirectoryNode" />
+              <item name="flutteriodemo" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="demos" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/appserver/public/apps" />
+      <recent name="$PROJECT_DIR$/backend/appserver/public/apps/reaction" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9af22f0f-4045-42e7-a30d-d666f681b0e3" name="Default" comment="" />
+      <created>1554662425447</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554662425447</updated>
+      <workItem from="1554662429181" duration="14648000" />
+      <workItem from="1554687353483" duration="7142000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="21790000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1680" y="-642" width="3008" height="1692" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Flutter Performance" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32973316" />
+      <window_info anchor="right" id="Flutter Outline" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.116992585" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" id="Flutter Inspector" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.2034632" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/backend/emulator/manifest.json" />
+    <entry file="file://$PROJECT_DIR$/backend/udp-manager/README.md" />
+    <entry file="file://$PROJECT_DIR$/backend/config/config.display.js" />
+    <entry file="file://$PROJECT_DIR$/backend/config/config.emulator.js" />
+    <entry file="file://$PROJECT_DIR$/backend/config/config.physical.js" />
+    <entry file="file://$PROJECT_DIR$/backend/config/config.power.js" />
+    <entry file="file://$PROJECT_DIR$/backend/config/config.udp.js" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/public/apps/static/package.json" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/public/apps/static/app.js" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/public/apps/getting-started-rpi/src/app.js" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/public/apps/reaction/src/app.js" />
+    <entry file="file://$PROJECT_DIR$/backend/emulator/README.md" />
+    <entry file="file://$PROJECT_DIR$/backend/emulator/package.json" />
+    <entry file="file://$PROJECT_DIR$/backend/chromebridge/src/power-unit.js" />
+    <entry file="file://$PROJECT_DIR$/backend/chromebridge/README.md" />
+    <entry file="file://$PROJECT_DIR$/backend/udp-manager/udp-manager.js" />
+    <entry file="file://$PROJECT_DIR$/backend/chromebridge/chromebridge.html" />
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es6.d.ts" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/node_modules/body-parser/index.js" />
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts" />
+    <entry file="file://$PROJECT_DIR$/backend/chromebridge/src/view-controller.js" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/public/js/index.js" />
+    <entry file="file://$PROJECT_DIR$/backend/chromebridge/background.js" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/README.md" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/public/apps/static/index.js" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/public/apps/reaction/index.js" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/src/app-runner.js" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/package.json" />
+    <entry file="file://$PROJECT_DIR$/backend/chromebridge/index.js" />
+    <entry file="file://$PROJECT_DIR$/backend/chromebridge/src/display-controller.js" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/src/anypixel-app.js" />
+    <entry file="file://$PROJECT_DIR$/backend/chromebridge/src/app-controller.js" />
+    <entry file="file://$PROJECT_DIR$/backend/chromebridge/src/display-unit.js" />
+    <entry file="file://$PROJECT_DIR$/backend/appserver/appserver.js" />
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/home.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="66" column="7" selection-start-line="66" selection-start-column="7" selection-end-line="66" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/app.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#997#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/anypixel.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/adaptive_controls_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-24">
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_banner_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_fortnightly_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_starter_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/bottom_nav_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/radical_slider_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/shape_theme_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/search_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/text_field_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_height_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="62" column="24" lean-forward="true" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/anypixel_life_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="174" column="7" lean-forward="true" selection-start-line="174" selection-start-column="7" selection-end-line="174" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutteriodemo/lib/demos/extended_fab_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-66">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -65,30 +65,6 @@ class IoDemos {
         title: "Adaptive Controls",
         routeBuilder: (BuildContext context) => AdaptiveControlsDemo(),
       )
-//      IoDemo(
-//        title: 'Anypixel Starter',
-//        routeBuilder: (BuildContext context) => AnypixelStarterDemo(),
-//      ),
-//      IoDemo(
-//        title: 'Anypixel Fortnightly',
-//        routeBuilder: (BuildContext context) => AnypixelFortnightlyDemo(),
-//      ),
-//      IoDemo(
-//        title: 'Anypixel Banner',
-//        routeBuilder: (BuildContext context) => AnypixelBannerDemo(),
-//      ),
-//      IoDemo(
-//        title: 'Anypixel Life',
-//        routeBuilder: (BuildContext context) => AnypixelLifeDemo(),
-//      ),
-//      IoDemo(
-//        title: 'Anypixel Height',
-//        routeBuilder: (BuildContext context) => AnypixelHeightDemo(),
-//      ),
-//      IoDemo(
-//        title: 'Fortnightly Phone Portrait',
-//        routeBuilder: (BuildContext context) => FortnightlyPhonePortrait(),
-//      ),
     ];
   }
 }

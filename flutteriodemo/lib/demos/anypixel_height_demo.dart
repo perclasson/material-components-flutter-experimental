@@ -27,7 +27,6 @@ class AnypixelHeightDemoState extends State<AnypixelHeightDemo> {
   @override
   void initState() {
     super.initState();
-//    _handlePressed(Offset.zero);
   }
 
   @override
@@ -61,7 +60,6 @@ class AnypixelHeightDemoState extends State<AnypixelHeightDemo> {
                         color: Colors.white,
                         letterSpacing: 0.9,
                         fontWeight: FontWeight.w500,
-//                    decoration: TextDecoration.underline,
                       ),
                   textAlign: TextAlign.center,
                 ),

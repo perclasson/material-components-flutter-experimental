@@ -32,7 +32,6 @@ class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
         assert(0 <= right && right < 140);
         assert(0 <= top && top < 42);
         assert(0 <= bottom && bottom < 42);
-//          print('$left $top $right $bottom');
         int sum = (state[left][top] ? 1 : 0) +
             (state[x][top] ? 1 : 0) +
             (state[right][top] ? 1 : 0) +
@@ -49,7 +48,6 @@ class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
       }
     }
     setState(() {
-//      print(state.toString());
       state = newState;
     });
   }
@@ -57,7 +55,6 @@ class AnypixelLifeDemoState extends State<AnypixelLifeDemo>
   @override
   void initState() {
     super.initState();
-//    _startTimer();
     state = List.generate(140, (_) => List(42));
     for (int x = 0; x < state.length; x++) {
       for (int y = 0; y < state[x].length; y++) {
@@ -175,7 +172,6 @@ class GolPainter extends CustomPainter {
         Offset offset = Offset(x.toDouble(), y.toDouble());
         canvas.drawRect(Rect.fromPoints(offset, offset + Offset(1, 1)),
             Paint()..color = state[x][y]);
-//        canvas.drawPoints(PointMode.points, [offset], Paint()..color = state[x][y]);
       }
     }
   }

@@ -9,7 +9,6 @@ class ExtendedFabDemo extends StatefulWidget {
 class ExtendedFabDemoState extends State<ExtendedFabDemo> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.menu),

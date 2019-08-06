@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/camera/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/camera/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/camera/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/camera/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/camera/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/camera/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/firebase_ml_vision/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/firebase_ml_vision/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/firebase_ml_vision/build" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/firebase_ml_vision/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/firebase_ml_vision/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/flutteriodemo/ios/.symlinks/plugins/firebase_ml_vision/example/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
